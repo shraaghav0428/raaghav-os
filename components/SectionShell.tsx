@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Reveal from "./Reveal";
+import DecryptedText from "./DecryptedText";
 
 export default function SectionShell({
   id,
@@ -21,7 +22,7 @@ export default function SectionShell({
           {index} <span className="text-slate-600">/</span>
         </div>
         <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-5xl font-bold tracking-tight">
-          {title}
+          <DecryptedText text={title} />
         </h2>
         {subtitle && (
           <p className="mt-4 text-slate-400 max-w-2xl text-base sm:text-lg font-light">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Boot from "@/components/Boot";
 import ParticleField from "@/components/ParticleField";
 import CursorBlob from "@/components/CursorBlob";
+import ClickSpark from "@/components/ClickSpark";
 import SpotlightProvider from "@/components/SpotlightProvider";
 import Nav from "@/components/Nav";
 import Controls from "@/components/Controls";
@@ -28,6 +29,7 @@ export default function Home() {
       {!booted && <Boot onDone={() => setBooted(true)} />}
       <ParticleField />
       <CursorBlob />
+      <ClickSpark />
       <SpotlightProvider />
       {jarvis && <div className="jarvis-scanline" aria-hidden />}
       <Nav />

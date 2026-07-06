@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { caseStudy } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
+import CountUp from "./CountUp";
 
 function AnimatedPipeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -96,7 +97,7 @@ export default function CaseStudyStrip() {
                 } ${isPatent && patentGlow ? "patent-glowing" : ""}`}
               >
                 <div className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl font-bold text-accent">
-                  {o.value}
+                  <CountUp value={o.value} />
                 </div>
                 <div className="mt-1.5 text-[13px] text-slate-400 font-light">{o.label}</div>
               </button>

@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { identity, heroMetrics } from "@/lib/content";
+import DecryptedText from "./DecryptedText";
+import Magnet from "./Magnet";
+import CountUp from "./CountUp";
 
 function useTyping(text: string, speed = 32, startDelay = 900) {
   const [out, setOut] = useState("");
@@ -55,10 +58,10 @@ export default function Hero() {
         </div>
 
         <h1
-          className="fade-up font-[family-name:var(--font-heading)] font-bold tracking-tight text-[17vw] sm:text-8xl lg:text-[9rem] leading-none text-gradient glow-blue select-none"
+          className="fade-up font-[family-name:var(--font-heading)] font-bold tracking-tight text-[17vw] sm:text-8xl lg:text-[9rem] leading-none glow-blue select-none"
           style={{ animationDelay: "0.25s" }}
         >
-          {identity.name}
+          <DecryptedText text={identity.name} speed={42} className="text-gradient" />
         </h1>
 
         <div
@@ -82,12 +85,14 @@ export default function Hero() {
         </p>
 
         <div className="fade-up mt-9 flex justify-center gap-4" style={{ animationDelay: "0.8s" }}>
-          <a
-            href="#about"
-            className="inline-flex items-center gap-2 rounded-full bg-primary/90 hover:bg-primary px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)]"
-          >
-            Enter the OS <span className="text-accent">↓</span>
-          </a>
+          <Magnet>
+            <a
+              href="#about"
+              className="inline-flex items-center gap-2 rounded-full bg-primary/90 hover:bg-primary px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)]"
+            >
+              Enter the OS <span className="text-accent">↓</span>
+            </a>
+          </Magnet>
         </div>
 
         <div
@@ -102,7 +107,7 @@ export default function Hero() {
               }`}
             >
               <div className="font-[family-name:var(--font-heading)] text-2xl sm:text-[1.6rem] font-bold text-accent">
-                {m.value}
+                <CountUp value={m.value} />
               </div>
               <div className="mt-1 text-[10.5px] uppercase tracking-[0.16em] text-slate-400">
                 {m.label}

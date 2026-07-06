@@ -1,6 +1,7 @@
 import { beyond, recommendations, identity } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
+import Magnet from "./Magnet";
 
 export default function Beyond() {
   return (
@@ -65,28 +66,34 @@ export default function Beyond() {
               Senior PM · AI-native · {identity.location}
             </p>
             <div className="relative mt-9 flex flex-wrap justify-center gap-4">
-              <a
-                href={`mailto:${identity.email}`}
-                className="rounded-full bg-primary/90 hover:bg-primary px-7 py-3 text-sm font-medium transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)]"
-              >
-                Email
-              </a>
-              <a
-                href={identity.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full glass px-7 py-3 text-sm text-slate-200 hover:border-accent/50 transition-all duration-300"
-              >
-                LinkedIn ↗
-              </a>
-              <a
-                href={identity.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full glass px-7 py-3 text-sm text-slate-200 hover:border-accent/50 transition-all duration-300"
-              >
-                GitHub ↗
-              </a>
+              <Magnet>
+                <a
+                  href={`mailto:${identity.email}`}
+                  className="inline-block rounded-full bg-primary/90 hover:bg-primary px-7 py-3 text-sm font-medium transition-colors duration-300 hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)]"
+                >
+                  Email
+                </a>
+              </Magnet>
+              <Magnet>
+                <a
+                  href={identity.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-full glass px-7 py-3 text-sm text-slate-200 hover:border-accent/50 transition-colors duration-300"
+                >
+                  LinkedIn ↗
+                </a>
+              </Magnet>
+              <Magnet>
+                <a
+                  href={identity.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-full glass px-7 py-3 text-sm text-slate-200 hover:border-accent/50 transition-colors duration-300"
+                >
+                  GitHub ↗
+                </a>
+              </Magnet>
             </div>
             <div className="relative mt-10 font-[family-name:var(--font-mono)] text-[11px] text-slate-600">
               RAAGHAV OS · built with Claude Code · psst — type{" "}
