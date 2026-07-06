@@ -8,6 +8,10 @@ export const identity = {
   roles: ["Product Manager", "Systems Thinker", "AI Builder"],
   tagline:
     "I build products where technology, business and human behaviour intersect.",
+  taglines: [
+    "I build products where technology, business and human behaviour intersect.",
+    "0→1 platforms. ₹730 Cr pipelines. AI products shipped solo.",
+  ],
   location: "Bangalore, India",
   email: "shraaghav@gmail.com",
   phone: "+91 99406 75689",

@@ -34,25 +34,30 @@ function noiseBuffer(c: AudioContext, dur: number) {
 
 function startWind(c: AudioContext) {
   if (windGain || !master) return;
-  const src = c.createBufferSource();
-  src.buffer = noiseBuffer(c, 2);
-  src.loop = true;
+  // gentle orb drone: three detuned sines through a soft lowpass — no noise hiss
   windFilter = c.createBiquadFilter();
-  windFilter.type = "bandpass";
-  windFilter.Q.value = 0.8;
-  windFilter.frequency.value = 320;
+  windFilter.type = "lowpass";
+  windFilter.Q.value = 0.6;
+  windFilter.frequency.value = 700;
   windGain = c.createGain();
   windGain.gain.value = 0;
-  src.connect(windFilter).connect(windGain).connect(master);
-  src.start();
+  [164.8, 196.0, 246.9].forEach((f, i) => {
+    const o = c.createOscillator();
+    o.type = "sine";
+    o.frequency.value = f;
+    o.detune.value = i * 3 - 3; // slow beating between voices
+    o.connect(windFilter!);
+    o.start();
+  });
+  windFilter.connect(windGain).connect(master);
 
   const loop = () => {
     if (windGain && windFilter && ctx) {
       const g = windGain.gain.value;
       // ease toward target, decay target
-      windGain.gain.value = g + (windTarget - g) * 0.12;
-      windFilter.frequency.value = 260 + windTarget * 5200;
-      windTarget *= 0.9;
+      windGain.gain.value = g + (windTarget - g) * 0.08;
+      windFilter.frequency.value = 500 + windTarget * 6000;
+      windTarget *= 0.92;
     }
     windRaf = requestAnimationFrame(loop);
   };
@@ -117,7 +122,7 @@ export const sfx = {
     const c = ensure();
     if (!c) return;
     startWind(c);
-    windTarget = Math.max(windTarget, Math.min(intensity * 0.14, 0.12));
+    windTarget = Math.max(windTarget, Math.min(intensity * 0.1, 0.085));
   },
 
   /** warm rising hum — orb open */

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toolMap } from "@/lib/content";
+import { toolIcons } from "@/lib/toolIcons";
 import { sfx } from "@/lib/sfx";
 
 // v2 — radial neural map. Core at center, tools on a ring grouped in cluster arcs,
@@ -147,7 +148,7 @@ export default function ToolMap() {
                 style={{ transition: "stroke 0.3s" }}
               />
               {/* data pulse */}
-              <circle r="2.4" fill="rgba(56,189,248,0.9)">
+              <circle r="2.4" fill={i % 2 ? "rgba(167,139,250,0.9)" : "rgba(56,189,248,0.9)"}>
                 <animateMotion
                   dur={`${2.6 + (i % 5) * 0.55}s`}
                   begin={`${(i % 7) * 0.4}s`}
@@ -174,11 +175,16 @@ export default function ToolMap() {
           </text>
         ))}
 
-        {/* tool nodes */}
+        {/* tool nodes — real brand marks (or monogram badges), name below */}
         {nodes.map((n) => {
           const isHot = hot === n.tool;
           const dim = hot && !isHot;
           const isClaudeCode = n.tool === "Claude Code";
+          const icon = toolIcons[n.tool];
+          const a = (n.angle * Math.PI) / 180;
+          // name label sits radially outside the node
+          const lx = n.x + Math.cos(a) * 44;
+          const ly = n.y + Math.sin(a) * 44;
           return (
             <g
               key={n.tool}
@@ -193,7 +199,7 @@ export default function ToolMap() {
               <circle
                 cx={n.x}
                 cy={n.y}
-                r={isHot ? 30 : 25}
+                r={isHot ? 27 : 23}
                 fill={isHot ? "rgba(0,112,187,0.4)" : "rgba(17,24,39,0.06)"}
                 stroke={
                   isClaudeCode
@@ -208,21 +214,30 @@ export default function ToolMap() {
                 {!hot && (
                   <animate
                     attributeName="r"
-                    values="25;26.5;25"
+                    values="23;24.5;23"
                     dur={`${3 + (n.x % 3)}s`}
                     repeatCount="indefinite"
                   />
                 )}
               </circle>
-              <text x={n.x} y={n.y + 3.5} textAnchor="middle" className={`toolmap-label ${isHot ? "hot" : ""} ${isClaudeCode ? "claude" : ""}`}>
-                {n.tool.split(" ").length > 1 ? (
-                  <>
-                    <tspan x={n.x} dy="-4">{n.tool.split(" ")[0]}</tspan>
-                    <tspan x={n.x} dy="11">{n.tool.split(" ").slice(1).join(" ")}</tspan>
-                  </>
-                ) : (
-                  n.tool
-                )}
+              {icon && "path" in icon ? (
+                <path
+                  d={icon.path}
+                  className="toolmap-icon"
+                  transform={`translate(${n.x - 10}, ${n.y - 10}) scale(${20 / 24})`}
+                />
+              ) : (
+                <text x={n.x} y={n.y + 5} textAnchor="middle" className="toolmap-monogram">
+                  {icon && "monogram" in icon ? icon.monogram : n.tool[0]}
+                </text>
+              )}
+              <text
+                x={lx}
+                y={ly + 3}
+                textAnchor="middle"
+                className={`toolmap-label ${isHot ? "hot" : ""} ${isClaudeCode ? "claude" : ""}`}
+              >
+                {n.tool}
               </text>
             </g>
           );

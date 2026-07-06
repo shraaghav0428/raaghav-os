@@ -7,28 +7,51 @@ import DecryptedText from "./DecryptedText";
 import Magnet from "./Magnet";
 import CountUp from "./CountUp";
 
-function useTyping(text: string, speed = 32, startDelay = 900) {
+// Types a phrase, holds, deletes, then types the next — loops forever.
+function useRotatingType(phrases: string[], speed = 30, hold = 4200, startDelay = 900) {
   const [out, setOut] = useState("");
+
   useEffect(() => {
+    let phrase = 0;
     let i = 0;
-    let interval: ReturnType<typeof setInterval>;
-    const t = setTimeout(() => {
-      interval = setInterval(() => {
+    let deleting = false;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const step = () => {
+      const text = phrases[phrase];
+      if (!deleting) {
         i++;
         setOut(text.slice(0, i));
-        if (i >= text.length) clearInterval(interval);
-      }, speed);
-    }, startDelay);
-    return () => {
-      clearTimeout(t);
-      clearInterval(interval);
+        if (i >= text.length) {
+          deleting = true;
+          timer = setTimeout(step, hold);
+          return;
+        }
+        timer = setTimeout(step, speed);
+      } else {
+        i -= 3; // delete faster than typing
+        if (i <= 0) {
+          i = 0;
+          deleting = false;
+          phrase = (phrase + 1) % phrases.length;
+          setOut("");
+          timer = setTimeout(step, 500);
+          return;
+        }
+        setOut(text.slice(0, i));
+        timer = setTimeout(step, 18);
+      }
     };
-  }, [text, speed, startDelay]);
+
+    timer = setTimeout(step, startDelay);
+    return () => clearTimeout(timer);
+  }, [phrases, speed, hold, startDelay]);
+
   return out;
 }
 
 export default function Hero() {
-  const typed = useTyping(identity.tagline);
+  const typed = useRotatingType(identity.taglines);
 
   return (
     <section

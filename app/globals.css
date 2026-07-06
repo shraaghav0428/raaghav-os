@@ -6,6 +6,7 @@
   --color-ink: #f8fafc;
   --color-primary: #0070bb;
   --color-accent: #38bdf8;
+  --color-accent2: #a78bfa;
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
@@ -90,8 +91,11 @@ body {
     from var(--spin),
     transparent 0deg,
     rgba(56, 189, 248, 0.9) 40deg,
-    rgba(0, 112, 187, 0.5) 80deg,
-    transparent 120deg
+    rgba(167, 139, 250, 0.7) 80deg,
+    transparent 120deg,
+    transparent 180deg,
+    rgba(167, 139, 250, 0.35) 220deg,
+    transparent 260deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -143,7 +147,7 @@ body {
   background:
     radial-gradient(ellipse 42% 34% at 38% 40%, rgba(0, 112, 187, 0.24), transparent 70%),
     radial-gradient(ellipse 38% 30% at 62% 34%, rgba(56, 189, 248, 0.14), transparent 70%),
-    radial-gradient(ellipse 30% 26% at 50% 60%, rgba(99, 102, 241, 0.1), transparent 70%);
+    radial-gradient(ellipse 30% 26% at 50% 60%, rgba(167, 139, 250, 0.13), transparent 70%);
   filter: blur(40px);
   animation: aurora-drift 16s ease-in-out infinite;
 }
@@ -185,7 +189,7 @@ body {
 
 /* ---------- gradient / shimmer text ---------- */
 .text-gradient {
-  background: linear-gradient(100deg, #f8fafc 30%, #38bdf8 48%, #f8fafc 66%);
+  background: linear-gradient(100deg, #f8fafc 26%, #38bdf8 44%, #a78bfa 56%, #f8fafc 72%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -350,6 +354,18 @@ body.jarvis-mode .orb-core {
   fill: #cbd5e1;
   font-weight: 600;
 }
+.toolmap-icon {
+  fill: #cbd5e1;
+  transition: fill 0.3s;
+}
+html.light .toolmap-icon { fill: #1e293b; }
+.toolmap-monogram {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  fill: #cbd5e1;
+}
+html.light .toolmap-monogram { fill: #1e293b; }
 .toolmap-role {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -396,7 +412,7 @@ html.light .text-accent { color: #0070bb; }
 html.light .section-index { color: #0070bb; }
 html.light .glow-blue { text-shadow: 0 0 40px rgba(0, 112, 187, 0.18); }
 html.light .text-gradient {
-  background: linear-gradient(100deg, #0b1220 30%, #0070bb 48%, #0b1220 66%);
+  background: linear-gradient(100deg, #0b1220 26%, #0070bb 44%, #7c3aed 56%, #0b1220 72%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
