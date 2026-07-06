@@ -88,6 +88,7 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
     clicksRef.current = [...clicksRef.current.filter((t) => now - t < 2500), now];
     if (clicksRef.current.length >= 5) {
       clicksRef.current = [];
+      sfx.boom();
       onSecretUnlock();
       return;
     }

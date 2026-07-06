@@ -4,71 +4,107 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toolMap } from "@/lib/content";
 import { sfx } from "@/lib/sfx";
 
-// Mind-map constellation of the actual toolchain.
-// Pure SVG — curved spokes from a glowing core to 4 cluster hubs, tools as leaf nodes.
+// v2 — radial neural map. Core at center, tools on a ring grouped in cluster arcs,
+// animated pulses travel the spokes. Hover a node: everything else dims and the
+// node's role in the workflow appears below the core.
 
 const W = 900;
-const H = 560;
+const H = 640;
 const CX = W / 2;
-const CY = H / 2;
+const CY = H / 2 - 10;
+const RING = 218; // node ring radius
+const LABEL_R = 316; // cluster label radius
 
-// hub positions (one per cluster)
-const HUBS = [
-  { x: 205, y: 130 }, // Build with AI
-  { x: 700, y: 140 }, // Ship
-  { x: 195, y: 435 }, // Design
-  { x: 705, y: 430 }, // Run the Process
-];
+const ROLES: Record<string, string> = {
+  "Claude Code": "built this site — my highest-leverage tool",
+  Claude: "thinking partner, writing, analysis",
+  ChatGPT: "research & brainstorming",
+  "Gemini API": "powers my shipped AI features",
+  Lovable: "rapid UI prototypes",
+  "VS Code": "where everything comes together",
+  GitHub: "version control for all my builds",
+  Vercel: "deploys everything I ship",
+  Figma: "product design & specs",
+  Canva: "decks & visual storytelling",
+  Gamma: "AI-generated presentations",
+  Jira: "sprints & backlog",
+  Confluence: "PRDs & documentation",
+  Granola: "AI meeting notes",
+};
 
-function leafPositions(hub: { x: number; y: number }, count: number, idx: number) {
-  // fan leaves outward, away from center
-  const away = Math.atan2(hub.y - CY, hub.x - CX);
-  const spread = Math.PI / (count > 3 ? 2.4 : 3.2);
-  return Array.from({ length: count }, (_, i) => {
-    const a = away - spread / 2 + (spread * i) / Math.max(count - 1, 1);
-    const r = 92 + (idx % 2) * 6;
-    return { x: hub.x + Math.cos(a) * r, y: hub.y + Math.sin(a) * r };
-  });
+const GAP_DEG = 16; // gap between cluster arcs
+
+type NodePos = {
+  tool: string;
+  cluster: string;
+  x: number;
+  y: number;
+  angle: number;
+};
+
+function buildLayout() {
+  const totalTools = toolMap.clusters.reduce((n, c) => n + c.tools.length, 0);
+  const usable = 360 - GAP_DEG * toolMap.clusters.length;
+  const perTool = usable / totalTools;
+  let cursor = -90 - perTool / 2; // start at top
+
+  const nodes: NodePos[] = [];
+  const clusterLabels: { name: string; x: number; y: number; angle: number }[] = [];
+
+  for (const c of toolMap.clusters) {
+    const arc = perTool * c.tools.length;
+    const mid = cursor + perTool / 2 + arc / 2 - perTool / 2;
+    clusterLabels.push({
+      name: c.name,
+      x: CX + Math.cos((mid * Math.PI) / 180) * LABEL_R,
+      y: CY + Math.sin((mid * Math.PI) / 180) * LABEL_R,
+      angle: mid,
+    });
+    for (let i = 0; i < c.tools.length; i++) {
+      cursor += perTool;
+      const a = (cursor * Math.PI) / 180;
+      nodes.push({
+        tool: c.tools[i],
+        cluster: c.name,
+        x: CX + Math.cos(a) * RING,
+        y: CY + Math.sin(a) * RING,
+        angle: cursor,
+      });
+    }
+    cursor += GAP_DEG;
+  }
+  return { nodes, clusterLabels };
 }
 
-function curve(a: { x: number; y: number }, b: { x: number; y: number }) {
-  const mx = (a.x + b.x) / 2;
-  const my = (a.y + b.y) / 2;
-  // bow the line slightly
-  const dx = b.y - a.y;
-  const dy = a.x - b.x;
-  const norm = Math.hypot(dx, dy) || 1;
-  const k = 18;
-  return `M ${a.x} ${a.y} Q ${mx + (dx / norm) * k} ${my + (dy / norm) * k} ${b.x} ${b.y}`;
+function spoke(n: NodePos) {
+  // curve from core edge to node, bowing slightly
+  const a = (n.angle * Math.PI) / 180;
+  const sx = CX + Math.cos(a) * 46;
+  const sy = CY + Math.sin(a) * 46;
+  const mx = CX + Math.cos(a + 0.09) * (RING * 0.55);
+  const my = CY + Math.sin(a + 0.09) * (RING * 0.55);
+  return `M ${sx.toFixed(1)} ${sy.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${(n.x - Math.cos(a) * 26).toFixed(1)} ${(n.y - Math.sin(a) * 26).toFixed(1)}`;
 }
 
 export default function ToolMap() {
   const [hot, setHot] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // center the core in view when the map is wider than its container (mobile)
   useEffect(() => {
     const el = scrollRef.current;
     if (el) el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
   }, []);
 
-  const layout = useMemo(
-    () =>
-      toolMap.clusters.map((c, i) => ({
-        ...c,
-        hub: HUBS[i],
-        leaves: leafPositions(HUBS[i], c.tools.length, i),
-      })),
-    []
-  );
+  const { nodes, clusterLabels } = useMemo(buildLayout, []);
+  const hotNode = nodes.find((n) => n.tool === hot);
 
   return (
     <div ref={scrollRef} className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        className="w-full min-w-[640px] select-none"
+        className="w-full min-w-[680px] select-none"
         role="img"
-        aria-label="Mind map of Raaghav's toolchain"
+        aria-label="Radial map of Raaghav's toolchain"
       >
         <defs>
           <radialGradient id="coreGrad" cx="35%" cy="32%">
@@ -85,117 +121,126 @@ export default function ToolMap() {
           </filter>
         </defs>
 
-        {/* spokes center → hubs */}
-        {layout.map((c) => (
-          <path
-            key={c.name}
-            d={curve({ x: CX, y: CY }, c.hub)}
-            fill="none"
-            stroke="rgba(56,189,248,0.28)"
-            strokeWidth="1.4"
-            strokeDasharray="3 5"
-            className="toolmap-line"
-          />
-        ))}
+        {/* orbit ring */}
+        <circle
+          cx={CX}
+          cy={CY}
+          r={RING}
+          fill="none"
+          stroke="rgba(56,189,248,0.1)"
+          strokeWidth="1"
+          strokeDasharray="2 7"
+        />
 
-        {/* clusters */}
-        {layout.map((c) => (
-          <g key={c.name}>
-            {/* hub → leaves */}
-            {c.leaves.map((l, i) => (
+        {/* spokes + traveling pulses */}
+        {nodes.map((n, i) => {
+          const dim = hot && hot !== n.tool;
+          const d = spoke(n);
+          return (
+            <g key={n.tool} opacity={dim ? 0.16 : 1} style={{ transition: "opacity 0.35s" }}>
               <path
-                key={c.tools[i]}
-                d={curve(c.hub, l)}
+                id={`spoke-${i}`}
+                d={d}
                 fill="none"
-                stroke={
-                  hot === c.tools[i]
-                    ? "rgba(56,189,248,0.7)"
-                    : "rgba(148,163,184,0.22)"
-                }
-                strokeWidth="1.2"
+                stroke={hot === n.tool ? "rgba(56,189,248,0.8)" : "rgba(148,163,184,0.22)"}
+                strokeWidth="1.1"
                 style={{ transition: "stroke 0.3s" }}
               />
-            ))}
-
-            {/* hub node */}
-            <g filter="url(#softGlow)">
-              <circle cx={c.hub.x} cy={c.hub.y} r="7" fill="rgba(56,189,248,0.85)" />
+              {/* data pulse */}
+              <circle r="2.4" fill="rgba(56,189,248,0.9)">
+                <animateMotion
+                  dur={`${2.6 + (i % 5) * 0.55}s`}
+                  begin={`${(i % 7) * 0.4}s`}
+                  repeatCount="indefinite"
+                  path={d}
+                />
+              </circle>
             </g>
-            <text
-              x={c.hub.x}
-              y={c.hub.y - 16}
-              textAnchor="middle"
-              className="toolmap-hublabel"
-            >
-              {c.name}
-            </text>
+          );
+        })}
 
-            {/* leaves */}
-            {c.leaves.map((l, i) => {
-              const tool = c.tools[i];
-              const isHot = hot === tool;
-              const isClaudeCode = tool === "Claude Code";
-              return (
-                <g
-                  key={tool}
-                  onMouseEnter={() => {
-                    setHot(tool);
-                    sfx.tick();
-                  }}
-                  onMouseLeave={() => setHot(null)}
-                  style={{ cursor: "default" }}
-                >
-                  <circle
-                    cx={l.x}
-                    cy={l.y}
-                    r={isHot ? 26 : 22}
-                    fill={isHot ? "rgba(0,112,187,0.35)" : "rgba(17,24,39,0.05)"}
-                    stroke={
-                      isClaudeCode
-                        ? "rgba(56,189,248,0.8)"
-                        : isHot
-                        ? "rgba(56,189,248,0.6)"
-                        : "rgba(148,163,184,0.3)"
-                    }
-                    strokeWidth={isClaudeCode ? 1.8 : 1.1}
-                    style={{ transition: "all 0.3s" }}
-                    className="toolmap-leaf"
-                  />
-                  <text
-                    x={l.x}
-                    y={l.y + 3.5}
-                    textAnchor="middle"
-                    className={`toolmap-label ${isHot ? "hot" : ""} ${
-                      isClaudeCode ? "claude" : ""
-                    }`}
-                  >
-                    {tool.split(" ").length > 1 ? (
-                      <>
-                        <tspan x={l.x} dy="-4">
-                          {tool.split(" ")[0]}
-                        </tspan>
-                        <tspan x={l.x} dy="11">
-                          {tool.split(" ").slice(1).join(" ")}
-                        </tspan>
-                      </>
-                    ) : (
-                      tool
-                    )}
-                  </text>
-                </g>
-              );
-            })}
-          </g>
+        {/* cluster labels */}
+        {clusterLabels.map((c) => (
+          <text
+            key={c.name}
+            x={c.x}
+            y={c.y}
+            textAnchor="middle"
+            className="toolmap-hublabel"
+            opacity={hot && hotNode?.cluster !== c.name ? 0.25 : 1}
+            style={{ transition: "opacity 0.35s" }}
+          >
+            {c.name}
+          </text>
         ))}
+
+        {/* tool nodes */}
+        {nodes.map((n) => {
+          const isHot = hot === n.tool;
+          const dim = hot && !isHot;
+          const isClaudeCode = n.tool === "Claude Code";
+          return (
+            <g
+              key={n.tool}
+              opacity={dim ? 0.22 : 1}
+              style={{ transition: "opacity 0.35s", cursor: "default" }}
+              onMouseEnter={() => {
+                setHot(n.tool);
+                sfx.tick();
+              }}
+              onMouseLeave={() => setHot(null)}
+            >
+              <circle
+                cx={n.x}
+                cy={n.y}
+                r={isHot ? 30 : 25}
+                fill={isHot ? "rgba(0,112,187,0.4)" : "rgba(17,24,39,0.06)"}
+                stroke={
+                  isClaudeCode
+                    ? "rgba(56,189,248,0.85)"
+                    : isHot
+                    ? "rgba(56,189,248,0.65)"
+                    : "rgba(148,163,184,0.32)"
+                }
+                strokeWidth={isClaudeCode ? 2 : 1.1}
+                style={{ transition: "all 0.3s" }}
+              >
+                {!hot && (
+                  <animate
+                    attributeName="r"
+                    values="25;26.5;25"
+                    dur={`${3 + (n.x % 3)}s`}
+                    repeatCount="indefinite"
+                  />
+                )}
+              </circle>
+              <text x={n.x} y={n.y + 3.5} textAnchor="middle" className={`toolmap-label ${isHot ? "hot" : ""} ${isClaudeCode ? "claude" : ""}`}>
+                {n.tool.split(" ").length > 1 ? (
+                  <>
+                    <tspan x={n.x} dy="-4">{n.tool.split(" ")[0]}</tspan>
+                    <tspan x={n.x} dy="11">{n.tool.split(" ").slice(1).join(" ")}</tspan>
+                  </>
+                ) : (
+                  n.tool
+                )}
+              </text>
+            </g>
+          );
+        })}
 
         {/* core */}
         <g filter="url(#softGlow)">
-          <circle cx={CX} cy={CY} r="34" fill="url(#coreGrad)">
-            <animate attributeName="r" values="34;36.5;34" dur="4s" repeatCount="indefinite" />
+          <circle cx={CX} cy={CY} r="38" fill="url(#coreGrad)">
+            <animate attributeName="r" values="38;41;38" dur="4s" repeatCount="indefinite" />
           </circle>
         </g>
         <text x={CX} y={CY + 4} textAnchor="middle" className="toolmap-core">
           {toolMap.center}
+        </text>
+
+        {/* role readout */}
+        <text x={CX} y={H - 14} textAnchor="middle" className="toolmap-role">
+          {hotNode ? `${hotNode.tool} — ${ROLES[hotNode.tool] ?? ""}` : "hover a node"}
         </text>
       </svg>
     </div>

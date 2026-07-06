@@ -213,8 +213,8 @@ export const products = [
     tagline: "Compounding, made visible.",
     detail:
       "Multi-currency SIP and goal modeling with interactive charts. I use it for my own investing.",
-    stack: ["Web App", "Chart.js"],
-    link: null,
+    stack: ["JavaScript", "Chart.js", "GitHub Pages"],
+    link: "https://shraaghav0428.github.io/RaaghavFinancialFreedom/",
     github: "https://github.com/shraaghav0428/RaaghavFinancialFreedom",
     size: "small",
   },
@@ -237,9 +237,9 @@ export const products = [
     tagline: "My best case study is the one you're inside.",
     detail:
       "An AI-powered portfolio with a live assistant grounded in my real work — designed and built with Claude Code.",
-    stack: ["Next.js", "Claude Code", "LLM"],
+    stack: ["Next.js 16", "Tailwind v4", "Claude Code", "LLM API", "Web Audio", "Vercel"],
     link: null,
-    github: null,
+    github: "https://github.com/shraaghav0428/raaghav-os",
     size: "small",
   },
 ];

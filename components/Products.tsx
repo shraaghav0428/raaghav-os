@@ -73,7 +73,17 @@ export default function Products() {
                 <p className="mt-2 text-[13px] text-slate-300 font-light flex-1">
                   {p.tagline}
                 </p>
-                <div className="mt-4 flex items-center gap-3 text-[12px]">
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="font-[family-name:var(--font-mono)] text-[9.5px] text-slate-400 bg-white/5 rounded px-1.5 py-0.5"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3 flex items-center gap-3 text-[12px]">
                   {p.link && (
                     <a
                       href={p.link}

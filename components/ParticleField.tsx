@@ -33,6 +33,9 @@ export default function ParticleField() {
 
     const tick = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // dark ink dots on light theme, cyan dots on dark theme
+      const light = document.documentElement.classList.contains("light");
+      const rgb = light ? "11, 18, 32" : "56, 189, 248";
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -42,7 +45,7 @@ export default function ParticleField() {
         if (p.y > canvas.height) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(56, 189, 248, ${p.o})`;
+        ctx.fillStyle = `rgba(${rgb}, ${light ? Math.min(p.o + 0.15, 0.55) : p.o})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(tick);

@@ -43,11 +43,12 @@ export default function Controls() {
     };
     const onScroll = () => {
       const now = performance.now();
+      const dt = Math.max(now - lastWhoosh, 1);
       const dy = Math.abs(window.scrollY - lastScrollY);
       lastScrollY = window.scrollY;
-      if (now - lastWhoosh < 750 || dy < 220) return;
       lastWhoosh = now;
-      sfx.whoosh(Math.min(dy / 600, 1.6));
+      // velocity in px/ms → continuous wind intensity
+      sfx.scroll(Math.min((dy / dt) * 1.4, 2));
     };
 
     window.addEventListener("mouseover", onOver, { passive: true });

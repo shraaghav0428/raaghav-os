@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { journey, aiLab } from "@/lib/content";
+import { sfx } from "@/lib/sfx";
 
 const KONAMI = [
   "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
@@ -37,6 +38,7 @@ export function useEasterEggs() {
         konamiIdx++;
         if (konamiIdx === KONAMI.length) {
           konamiIdx = 0;
+          sfx.boom();
           setJarvis((j) => !j);
         }
       } else {

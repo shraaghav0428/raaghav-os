@@ -312,6 +312,13 @@ body.jarvis-mode .orb-core {
   fill: #cbd5e1;
   font-weight: 600;
 }
+.toolmap-role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: #64748b;
+  letter-spacing: 0.04em;
+}
+html.light .toolmap-role { fill: #475569; }
 
 /* ============================================================
    LIGHT THEME — html.light remaps the dark palette
@@ -356,19 +363,30 @@ html.light .text-gradient {
   -webkit-background-clip: text;
   background-clip: text;
 }
-html.light .bg-grid {
-  background-image: linear-gradient(rgba(0, 112, 187, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 112, 187, 0.05) 1px, transparent 1px);
+html.light .aurora {
+  opacity: 0.5;
+  background:
+    radial-gradient(ellipse 42% 34% at 38% 40%, rgba(11, 18, 32, 0.14), transparent 70%),
+    radial-gradient(ellipse 38% 30% at 62% 34%, rgba(0, 112, 187, 0.12), transparent 70%),
+    radial-gradient(ellipse 30% 26% at 50% 60%, rgba(11, 18, 32, 0.08), transparent 70%);
 }
-html.light .aurora { opacity: 0.55; }
 html.light .cursor-blob {
   background: radial-gradient(
     circle at 45% 42%,
-    rgba(0, 112, 187, 0.09),
-    rgba(56, 189, 248, 0.05) 50%,
+    rgba(11, 18, 32, 0.1),
+    rgba(0, 112, 187, 0.06) 50%,
     transparent 72%
   );
 }
+html.light .bg-grid {
+  background-image: linear-gradient(rgba(11, 18, 32, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 18, 32, 0.06) 1px, transparent 1px);
+}
+/* dark chips/nodes on light bg */
+html.light .orb-core {
+  background: radial-gradient(circle at 32% 30%, #38bdf8 0%, #0070bb 45%, #063a5e 80%, #02121f 100%);
+}
+html.light .glow-blue { text-shadow: none; }
 html.light .spot::before {
   background: radial-gradient(
     360px circle at var(--mx, 50%) var(--my, 50%),
