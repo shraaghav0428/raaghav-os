@@ -38,36 +38,36 @@ export const journey = [
       "Long before PRDs, I was engineering roller coasters out of train tracks and household objects, iterating until the cars flew. The tools changed. The obsession with building things that work didn't.",
   },
   {
-    era: "2018",
+    era: "2019",
     title: "Business Analyst",
     org: "Run Adam Sports",
-    hook: "Learned the product craft on a live marketplace — scaled to 15,000 registrations.",
+    hook: "Scaled a sports & fitness marketplace to ~15,000 users.",
     detail:
-      "A sports & fitness networking marketplace was my training ground: backlog prioritization, sprint ceremonies, working with UX/UI teams to build the platform's interface. Fundamentals earned on real users, not theory.",
+      "My training ground: backlog prioritization, sprint ceremonies, working with UX/UI teams to build the platform's interface. Product fundamentals earned on real users, not theory.",
   },
   {
-    era: "2021",
+    era: "2020 – 2022",
     title: "Product Manager",
     org: "Matex Technologies",
-    hook: "My introduction to procurement — ₹330 Cr GMV, ₹30 Cr+ saved for customers.",
+    hook: "Scaled a reverse auction platform 2 → 30 customers — ₹330 Cr GMV, ₹30 Cr saved.",
     detail:
-      "PM for a B2B marketplace connecting 80 corporate clients with 10,000+ vendors — storefronts, RFQs, the works. Also owned a Reverse Auction SaaS and grew it from 2 to 30 clients. Together: ₹330 Cr in GMV and over ₹30 Cr in documented savings.",
+      "My introduction to procurement. Alongside the reverse auction platform, I was PM for a vendor rating platform and a B2B sourcing marketplace connecting 80 corporates with 10,000+ vendors — storefronts, RFQs, the works.",
   },
   {
-    era: "2022",
+    era: "2024 – 2026",
     title: "Senior Product Manager",
     org: "Machine Maze",
-    hook: "Owned the 0→1 build of a complete manufacturing ecosystem — pipeline scaled 21x.",
+    hook: "Owned the 0→1 build of a complete manufacturing ecosystem — RFQ pipeline scaled 21x.",
     detail:
-      "Built Precision X end to end — connecting every department and touchpoint in custom manufacturing. Led discovery, ideation, roadmap and launch as the first and only PM. Filed an India patent for the workflow, scaled the RFQ pipeline 21x from ₹34 Cr to ₹730 Cr, and carried the product story into investor funding discussions.",
+      "An end-to-end ecosystem connecting every department and touchpoint within manufacturing. Led discovery, ideation, roadmap and launch as the first and only PM. Filed an India patent for the workflow, and scaled the RFQ pipeline 21x from ₹30 Cr to ₹730 Cr.",
   },
   {
-    era: "2025",
+    era: "Now",
     title: "AI Product Builder",
     org: "Independent",
-    hook: "AI is my daily workflow — 4 products designed, built and shipped solo.",
+    hook: "AI is my daily workflow — products designed, built and shipped solo.",
     detail:
-      "Professional or personal, I build with AI every day: Gemini and Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator, an AI PDF editor — end to end, without a traditional coding background.",
+      "Professional or personal, I build with AI every day: Gemini and Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator — end to end, without a traditional coding background.",
   },
   {
     era: "Next",
@@ -144,20 +144,38 @@ export const caseStudy = {
   company: "Machine Maze",
   product: "Precision X",
   role: "First and only PM · 0→1",
-  problem:
-    "Global OEMs sourced custom manufacturing over email and spreadsheets. One RFQ took days of back-and-forth across sales, engineering and pricing.",
-  vision:
-    "Make on-demand manufacturing transparent — digitize the workflow first, then layer costing intelligence and AI on the data.",
-  solution:
-    "A full-stack B2B platform covering the lifecycle end to end: RFQ feasibility, price discovery, quote comparison, proposals and purchase orders — with 3D CAD viewing and CRM built in.",
+  problem: {
+    headline: "Manufacturing ran on email, spreadsheets and WhatsApp.",
+    points: [
+      "No one — not leadership, not customers — could say where any quote stood, what got rejected, who decided, or why.",
+      "RFQ-to-quote took 4 weeks. Customers were losing patience and moving to competitors.",
+      "Every department had its own version of the truth; nothing connected sales, engineering, pricing and partners.",
+    ],
+  },
+  vision: {
+    headline: "Digitize the ground truth. Then make it intelligent.",
+    points: [
+      "One platform connecting every department and touchpoint in the manufacturing lifecycle — every decision logged, every workflow visible.",
+      "Sequence deliberately: Platform → Data → Intelligence → Agents. No AI promises before the structural work.",
+      "Make on-demand manufacturing transparent for global OEMs, their partners, and the business itself.",
+    ],
+  },
+  solution: {
+    headline: "Precision X — the manufacturing lifecycle, end to end.",
+    points: [
+      "7 modules shipped: RFQ feasibility → price discovery → quote comparison → proposals → customer purchase orders.",
+      "Feasibility scoring with human-in-the-loop approvals — AI surfaces the signal, reviewers make the call. 27-hour TaT held at 21x volume.",
+      "Intelligent RFQ-to-supplier matchmaking across 400 GST-verified partners, with Autodesk 3D CAD viewing and Zoho CRM built into the flow.",
+    ],
+  },
   challenges: [
-    "No playbook, no PM above me, a domain learned from machinists up",
-    "Users who lived in Excel — adoption earned workflow by workflow",
-    "Small team, 17 modules planned — shipped the 7 that compound",
-    "Translating shop-floor complexity into boardroom narratives",
+    "No playbook, no PM above me — learned the domain from machinists up",
+    "Users lived in Excel; every module had to earn its own adoption",
+    "17 modules planned, small team — shipped the 7 that compound",
+    "Shop-floor complexity translated into boardroom narratives, every quarter",
   ],
   outcomes: [
-    { value: "21x", label: "RFQ pipeline — ₹34 Cr to ₹730 Cr" },
+    { value: "21x", label: "RFQ pipeline — ₹30 Cr to ₹730 Cr" },
     { value: "4 wks → 3 days", label: "RFQ-to-quote turnaround" },
     { value: "Patent", label: "IN 202541011592 + Global PCT — named inventor" },
     { value: "27 hrs", label: "Avg. feasibility turnaround at 21x volume" },
@@ -220,18 +238,6 @@ export const products = [
     stack: ["JavaScript", "Chart.js", "GitHub Pages"],
     link: "https://shraaghav0428.github.io/RaaghavFinancialFreedom/",
     github: "https://github.com/shraaghav0428/RaaghavFinancialFreedom",
-    size: "small",
-  },
-  {
-    name: "AI PDF Editor",
-    kind: "Browser AI Tool",
-    status: "Prototype",
-    tagline: "Select. Replace. Done.",
-    detail:
-      "Region-level PDF editing powered by Gemini — no desktop software, runs in the browser.",
-    stack: ["Gemini", "Vercel"],
-    link: null,
-    github: null,
     size: "small",
   },
   {
@@ -307,13 +313,50 @@ export const principles = [
   "Data informs. Users decide.",
 ];
 
+// Front of card: the belief. Back of card: the receipt/personality. Flip to reveal.
 export const beyond = [
-  { name: "Chess", icon: "♞", why: "Deciding well with incomplete information." },
-  { name: "Investing", icon: "◔", why: "I think in decades, not quarters." },
-  { name: "Gym", icon: "▲", why: "Consistency compounds. 7 AM, five days a week." },
-  { name: "Music", icon: "♪", why: "Structure underneath what feels effortless." },
-  { name: "Travel", icon: "✈", why: "New contexts break old assumptions." },
-  { name: "Family", icon: "☀", why: "Chennai, every month. Never deprioritized." },
+  {
+    name: "Chess",
+    icon: "♞",
+    why: "Deciding well with incomplete information.",
+    flip: "Every position is a prioritization exercise — evaluate, commit, live with the trade-off. Sounds familiar.",
+    link: null,
+  },
+  {
+    name: "Investing",
+    icon: "◔",
+    why: "I think in decades, not quarters.",
+    flip: "Compounding is the only strategy I've never had to pivot. I even built the calculator I plan with.",
+    link: "https://shraaghav0428.github.io/RaaghavFinancialFreedom/",
+  },
+  {
+    name: "Gym",
+    icon: "▲",
+    why: "Consistency compounds.",
+    flip: "7 AM, five days a week, non-negotiable. Discipline is a transferable skill — ask my backlog.",
+    link: null,
+  },
+  {
+    name: "Veena",
+    icon: "♪",
+    why: "Structure underneath what feels effortless.",
+    flip: "I play the veena — Carnatic classical. The original lesson in deliberate practice: slow reps, muscle memory, then it sings.",
+    link: null,
+  },
+  {
+    name: "Travel",
+    icon: "✈",
+    why: "New contexts break old assumptions.",
+    flip: "Every trip is user research I didn't plan — watching how differently people solve the same problems.",
+    link: null,
+  },
+  {
+    name: "Family",
+    icon: "☀",
+    why: "Chennai, every month. Never deprioritized.",
+    flip: "Some commitments don't go on the roadmap. They are the roadmap.",
+    link: null,
+  },
 ];
 
 export const recommendations = [
@@ -360,9 +403,9 @@ ${identity.fullName} — Senior Product Manager based in ${identity.location}. 7
 ${journey.map((j) => `- ${j.era} · ${j.title} @ ${j.org}: ${j.hook} ${j.detail}`).join("\n")}
 
 # PRECISION X / MACHINE MAZE (flagship case study)
-Problem: ${caseStudy.problem}
-Vision: ${caseStudy.vision}
-Solution: ${caseStudy.solution}
+Problem: ${caseStudy.problem.headline} ${caseStudy.problem.points.join(" ")}
+Vision: ${caseStudy.vision.headline} ${caseStudy.vision.points.join(" ")}
+Solution: ${caseStudy.solution.headline} ${caseStudy.solution.points.join(" ")}
 Challenges: ${caseStudy.challenges.join(" | ")}
 Outcomes: ${caseStudy.outcomes.map((o) => `${o.value} — ${o.label}`).join(" | ")}
 Lessons: ${caseStudy.lessons.join(" | ")}
@@ -392,7 +435,7 @@ ${playbook.map((p) => `- ${p.topic}: ${p.card}`).join("\n")}
 ${principles.join(" · ")}
 
 # BEYOND WORK
-${beyond.map((b) => `- ${b.name}: ${b.why}`).join("\n")}
+${beyond.map((b) => `- ${b.name}: ${b.why} ${b.flip}`).join("\n")}
 
 # EDUCATION & CERTIFICATIONS
 ${education.map((e) => `${e.degree}, ${e.school}`).join(" · ")}. Certifications: ${certifications.join(", ")}.

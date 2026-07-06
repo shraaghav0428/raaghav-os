@@ -8,7 +8,7 @@ import CountUp from "./CountUp";
 
 function AnimatedPipeline() {
   const ref = useRef<HTMLDivElement>(null);
-  const [value, setValue] = useState(34);
+  const [value, setValue] = useState(30);
 
   useEffect(() => {
     const el = ref.current;
@@ -22,7 +22,7 @@ function AnimatedPipeline() {
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / dur);
           const eased = 1 - Math.pow(1 - t, 3);
-          setValue(Math.round(34 + (730 - 34) * eased));
+          setValue(Math.round(30 + (730 - 30) * eased));
           if (t < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -50,7 +50,7 @@ function AnimatedPipeline() {
         ₹{value} Cr
       </div>
       <div className="mt-3 text-sm text-slate-400">
-        from ₹34 Cr · <span className="text-success font-medium">21x in under 3 years</span>
+        from ₹30 Cr · <span className="text-success font-medium">21x growth</span>
       </div>
       <div className="mt-7 h-1.5 max-w-md mx-auto rounded-full bg-slate-800 overflow-hidden">
         <div
@@ -126,21 +126,30 @@ export default function CaseStudyStrip() {
           </div>
 
           <div key={tab} className="mt-6 fade-in min-h-[7rem]">
-            {tab === "Problem" && (
-              <p className="text-base sm:text-lg text-slate-200 font-light max-w-3xl leading-relaxed">
-                {caseStudy.problem}
-              </p>
-            )}
-            {tab === "Vision" && (
-              <p className="text-base sm:text-lg text-slate-200 font-light max-w-3xl leading-relaxed">
-                {caseStudy.vision}
-              </p>
-            )}
-            {tab === "Solution" && (
-              <p className="text-base sm:text-lg text-slate-200 font-light max-w-3xl leading-relaxed">
-                {caseStudy.solution}
-              </p>
-            )}
+            {(tab === "Problem" || tab === "Vision" || tab === "Solution") &&
+              (() => {
+                const block =
+                  tab === "Problem"
+                    ? caseStudy.problem
+                    : tab === "Vision"
+                    ? caseStudy.vision
+                    : caseStudy.solution;
+                return (
+                  <div className="max-w-4xl">
+                    <p className="font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-semibold">
+                      {block.headline}
+                    </p>
+                    <ul className="mt-5 space-y-3">
+                      {block.points.map((pt) => (
+                        <li key={pt} className="flex gap-3 text-[15px] sm:text-base text-slate-300 font-light leading-relaxed">
+                          <span className="text-accent mt-1 shrink-0">▹</span>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
             {tab === "Challenges" && (
               <ul className="grid sm:grid-cols-2 gap-3 max-w-4xl">
                 {caseStudy.challenges.map((c) => (

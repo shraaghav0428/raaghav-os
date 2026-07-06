@@ -1,32 +1,74 @@
+"use client";
+
+import { useState } from "react";
 import { beyond, recommendations, identity } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 import Magnet from "./Magnet";
+import { sfx } from "@/lib/sfx";
 
 export default function Beyond() {
+  const [flipped, setFlipped] = useState<number | null>(null);
+
   return (
     <>
       <SectionShell
         id="beyond"
         index="07 · Beyond Work"
         title="Hobbies are frameworks too."
+        subtitle="Flip a card. Every hobby trains something the day job needs."
       >
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {beyond.map((b, i) => (
-            <Reveal key={b.name} delay={(i % 3) * 60}>
-              <div className="glass spot rounded-2xl p-6 h-full">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl text-accent">{b.icon}</span>
-                  <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold">
-                    {b.name}
-                  </h3>
-                </div>
-                <p className="mt-3 text-sm text-slate-300 font-light leading-relaxed">
-                  {b.why}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+          {beyond.map((b, i) => {
+            const isFlipped = flipped === i;
+            return (
+              <Reveal key={b.name} delay={(i % 3) * 60}>
+                <button
+                  className={`flip-card w-full h-56 sm:h-48 text-left ${isFlipped ? "flipped" : ""}`}
+                  onClick={() => {
+                    setFlipped(isFlipped ? null : i);
+                    sfx.ping();
+                  }}
+                  aria-pressed={isFlipped}
+                >
+                  <span className="flip-inner">
+                    {/* front */}
+                    <span className="flip-face glass rounded-2xl p-6">
+                      <span className="flex items-center gap-3">
+                        <span className="text-3xl text-accent">{b.icon}</span>
+                        <span className="font-[family-name:var(--font-heading)] text-lg font-semibold">
+                          {b.name}
+                        </span>
+                      </span>
+                      <span className="mt-3 block text-sm text-slate-300 font-light leading-relaxed">
+                        {b.why}
+                      </span>
+                      <span className="absolute bottom-4 right-5 font-[family-name:var(--font-mono)] text-[10px] text-accent/60">
+                        flip ⟳
+                      </span>
+                    </span>
+                    {/* back */}
+                    <span className="flip-face flip-back glass rounded-2xl p-5 sm:p-6 border-accent/30 bg-primary/10">
+                      <span className="block text-[13px] sm:text-sm text-slate-200 font-light leading-relaxed">
+                        {b.flip}
+                      </span>
+                      {b.link && (
+                        <a
+                          href={b.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="absolute bottom-4 left-6 text-[12px] text-accent hover:text-ink transition-colors"
+                        >
+                          See the tool I built ↗
+                        </a>
+                      )}
+                    </span>
+                  </span>
+                </button>
+              </Reveal>
+            );
+          })}
         </div>
 
         {!recommendations[0]?.placeholder && (

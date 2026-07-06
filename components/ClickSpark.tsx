@@ -39,7 +39,6 @@ export default function ClickSpark() {
     const tick = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const now = performance.now();
-      const light = document.documentElement.classList.contains("light");
       sparks = sparks.filter((s) => now - s.born < DUR);
       for (const s of sparks) {
         const t = (now - s.born) / DUR;
@@ -51,9 +50,7 @@ export default function ClickSpark() {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x1 + Math.cos(s.a) * len, y1 + Math.sin(s.a) * len);
-        ctx.strokeStyle = light
-          ? `rgba(0, 112, 187, ${1 - t})`
-          : `rgba(56, 189, 248, ${1 - t})`;
+        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - t})`;
         ctx.lineWidth = 2;
         ctx.lineCap = "round";
         ctx.stroke();

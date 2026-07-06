@@ -3,19 +3,12 @@
 import { useEffect, useState } from "react";
 import { sfx } from "@/lib/sfx";
 
-// Theme (dark/light) + sound toggles, wired to localStorage.
-// Also owns the global sound event listeners (hover ticks, click chirps, scroll whoosh).
+// Sound toggle + global interaction sounds (hover ticks, click chirps, scroll drone).
 export default function Controls() {
-  const [light, setLight] = useState(false);
   const [sound, setSound] = useState(false);
 
-  // restore prefs
+  // restore pref
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      setLight(true);
-      document.documentElement.classList.add("light");
-    }
     if (localStorage.getItem("sound") === "on") {
       setSound(true);
       sfx.enabled = true;
@@ -47,7 +40,7 @@ export default function Controls() {
       const dy = Math.abs(window.scrollY - lastScrollY);
       lastScrollY = window.scrollY;
       lastWhoosh = now;
-      // velocity in px/ms → continuous wind intensity
+      // velocity in px/ms → continuous drone intensity
       sfx.scroll(Math.min((dy / dt) * 1.4, 2));
     };
 
@@ -61,13 +54,6 @@ export default function Controls() {
     };
   }, []);
 
-  const toggleTheme = () => {
-    const next = !light;
-    setLight(next);
-    document.documentElement.classList.toggle("light", next);
-    localStorage.setItem("theme", next ? "light" : "dark");
-  };
-
   const toggleSound = () => {
     const next = !sound;
     setSound(next);
@@ -77,15 +63,7 @@ export default function Controls() {
   };
 
   return (
-    <div className="fixed top-4 left-4 z-50 flex gap-2">
-      <button
-        onClick={toggleTheme}
-        aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
-        title={light ? "Dark mode" : "Light mode"}
-        className="glass-strong rounded-full w-11 h-11 flex items-center justify-center text-accent hover:border-accent/50 transition-colors text-lg"
-      >
-        {light ? "☾" : "☀"}
-      </button>
+    <div className="fixed top-4 left-4 z-50">
       <button
         onClick={toggleSound}
         aria-label={sound ? "Mute sound" : "Enable sound"}
