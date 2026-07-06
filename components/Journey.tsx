@@ -8,7 +8,7 @@ import Reveal from "./Reveal";
 // Vertical timeline with a rocket that flies down the spine as you scroll.
 // Chapters ignite as the ship passes them. Starts at age 10 — Hot Wheels.
 export default function Journey() {
-  const [open, setOpen] = useState<number | null>(3); // Machine Maze open by default
+  const [open, setOpen] = useState<number | null>(4); // Aerchain (current role) open by default
   const [progress, setProgress] = useState(0); // 0..1 through the timeline
   const trackRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -44,7 +44,7 @@ export default function Journey() {
       id="about"
       index="01 · The Journey"
       title="It started with Hot Wheels."
-      subtitle="Six chapters, one throughline: build the thing, make it work, make it faster."
+      subtitle="One throughline: build the thing, make it work, make it faster."
     >
       <div ref={trackRef} className="relative">
         {/* spine: dim base + lit trail behind the ship */}

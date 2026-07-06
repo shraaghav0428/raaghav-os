@@ -62,20 +62,20 @@ export const journey = [
       "An end-to-end ecosystem connecting every department and touchpoint within manufacturing. Led discovery, ideation, roadmap and launch as the first and only PM. Filed an India patent for the workflow, and scaled the RFQ pipeline 21x from ₹30 Cr to ₹730 Cr.",
   },
   {
-    era: "Now",
+    era: "2026 – Present",
+    title: "Senior Product Manager",
+    org: "Aerchain",
+    hook: "Building AI-first procurement — the domain I know, now agent-native.",
+    detail:
+      "Aerchain powers enterprise procurement with AI agents across sourcing, evaluation and purchase workflows. Full circle: I built this problem from the supply side at Machine Maze — now I'm building it from the buy side, with AI at the core.",
+  },
+  {
+    era: "Always",
     title: "AI Product Builder",
     org: "Independent",
     hook: "AI is my daily workflow — products designed, built and shipped solo.",
     detail:
       "Professional or personal, I build with AI every day: Gemini and Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator — end to end, without a traditional coding background.",
-  },
-  {
-    era: "Next",
-    title: "AI Product Leader",
-    org: "The next chapter",
-    hook: "Bringing systems thinking to products where AI agents do real work.",
-    detail:
-      "The thesis: platform first, data second, intelligence third, agents last. Most companies skip steps. I don't.",
   },
 ];
 
@@ -397,7 +397,7 @@ export const navSections = [
 export function buildKnowledgeBase(): string {
   return `
 # WHO IS RAAGHAV
-${identity.fullName} — Senior Product Manager based in ${identity.location}. 7+ years across B2B SaaS, manufacturing tech and marketplace products, mostly in high-growth startup environments. He has never written traditional code, yet ships AI-powered products end-to-end using Claude, Gemini, VS Code, GitHub and Vercel. Contact: ${identity.email} · LinkedIn: ${identity.linkedin} · GitHub: ${identity.github}
+${identity.fullName} — Senior Product Manager at Aerchain (2026–present), the AI-first procurement platform. Based in ${identity.location}. 7+ years across B2B SaaS, manufacturing tech and marketplace products, mostly in high-growth startup environments. He has never written traditional code, yet ships AI-powered products end-to-end using Claude, Gemini, VS Code, GitHub and Vercel. Contact: ${identity.email} · LinkedIn: ${identity.linkedin} · GitHub: ${identity.github}
 
 # CAREER JOURNEY
 ${journey.map((j) => `- ${j.era} · ${j.title} @ ${j.org}: ${j.hook} ${j.detail}`).join("\n")}
