@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "raaghav-os",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "cwd": "/Users/raaghavsh/Desktop/Raaghav Resume/Raaghav Context/raaghav-os"
+    }
+  ]
+}
