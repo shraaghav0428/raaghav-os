@@ -15,7 +15,7 @@ export default function AILab() {
     >
       {/* mind map of the toolchain */}
       <Reveal>
-        <div className="glass rounded-3xl p-4 sm:p-8">
+        <div className="glass idle-shimmer rounded-3xl p-4 sm:p-8">
           <ToolMap />
         </div>
       </Reveal>

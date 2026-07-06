@@ -24,11 +24,16 @@ export default function ClickSpark() {
       canvas.height = window.innerHeight;
     };
 
-    const onClick = (e: MouseEvent) => {
+    const burst = (x: number, y: number, count: number) => {
       const now = performance.now();
-      for (let i = 0; i < 9; i++) {
-        sparks.push({ x: e.clientX, y: e.clientY, a: (Math.PI * 2 * i) / 9 + Math.random() * 0.4, born: now });
+      for (let i = 0; i < count; i++) {
+        sparks.push({ x, y, a: (Math.PI * 2 * i) / count + Math.random() * 0.4, born: now });
       }
+    };
+    const onClick = (e: MouseEvent) => burst(e.clientX, e.clientY, 9);
+    const onOsSpark = (e: Event) => {
+      const d = (e as CustomEvent).detail;
+      burst(d.x, d.y, d.count ?? 16);
     };
 
     const tick = () => {
@@ -60,10 +65,12 @@ export default function ClickSpark() {
     tick();
     window.addEventListener("resize", resize);
     window.addEventListener("click", onClick, { passive: true });
+    window.addEventListener("os-spark", onOsSpark);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("click", onClick);
+      window.removeEventListener("os-spark", onOsSpark);
     };
   }, []);
 

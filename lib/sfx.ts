@@ -215,6 +215,33 @@ export const sfx = {
     o.stop(t + 0.62);
   },
 
+  /** rising charge tone — boot handshake; returns a stop() handle */
+  chargeStart(duration = 1.1): { stop: (success: boolean) => void } {
+    if (!this.enabled) return { stop: () => {} };
+    const c = ensure();
+    if (!c || !master) return { stop: () => {} };
+    const t = c.currentTime;
+    const o = c.createOscillator();
+    const g = c.createGain();
+    o.type = "triangle";
+    o.frequency.setValueAtTime(150, t);
+    o.frequency.exponentialRampToValueAtTime(920, t + duration);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.07, t + 0.12);
+    o.connect(g).connect(master);
+    o.start(t);
+    o.stop(t + duration + 0.1);
+    return {
+      stop: (success: boolean) => {
+        const now = c.currentTime;
+        g.gain.cancelScheduledValues(now);
+        g.gain.setValueAtTime(g.gain.value, now);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + (success ? 0.05 : 0.18));
+        if (success) this.boom();
+      },
+    };
+  },
+
   /** short confirmation ping — tab/chip selections */
   ping() {
     if (!this.enabled) return;

@@ -53,7 +53,7 @@ export default function Beyond() {
 
       <section id="contact" className="relative z-10 max-w-4xl mx-auto px-6 pb-32 pt-4">
         <Reveal>
-          <div className="glass-strong rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden">
+          <div className="glass-strong idle-shimmer rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden">
             <div
               className="absolute -top-24 left-1/2 -translate-x-1/2 w-[440px] h-[440px] rounded-full opacity-25 blur-[100px] pointer-events-none"
               style={{ background: "radial-gradient(circle, #0070bb, transparent 70%)" }}

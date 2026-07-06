@@ -77,7 +77,7 @@ export default function CaseStudyStrip() {
       subtitle={`${caseStudy.company} · ${caseStudy.role}`}
     >
       <Reveal>
-        <div className="glass rounded-3xl overflow-hidden">
+        <div className="glass idle-shimmer rounded-3xl overflow-hidden">
           <AnimatedPipeline />
         </div>
       </Reveal>

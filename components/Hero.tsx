@@ -5,6 +5,7 @@ import Image from "next/image";
 import { identity, heroMetrics } from "@/lib/content";
 import DecryptedText from "./DecryptedText";
 import Magnet from "./Magnet";
+import BootButton from "./BootButton";
 import CountUp from "./CountUp";
 
 // Types a phrase, holds, deletes, then types the next — loops forever.
@@ -109,12 +110,7 @@ export default function Hero() {
 
         <div className="fade-up mt-9 flex justify-center gap-4" style={{ animationDelay: "0.8s" }}>
           <Magnet>
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 rounded-full bg-primary/90 hover:bg-primary px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)]"
-            >
-              Enter the OS <span className="text-accent">↓</span>
-            </a>
+            <BootButton />
           </Magnet>
         </div>
 

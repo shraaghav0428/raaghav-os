@@ -17,6 +17,7 @@ export default function SectionShell({
 }) {
   return (
     <section id={id} className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-32">
+      <div className="beam-line mb-16 sm:mb-20" aria-hidden />
       <Reveal>
         <div className="section-index mb-3">
           {index} <span className="text-slate-600">/</span>

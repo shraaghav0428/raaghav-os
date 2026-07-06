@@ -313,6 +313,79 @@ body.jarvis-mode .orb-core {
   z-index: 90;
 }
 
+/* ---------- rocket ---------- */
+@keyframes flame-flicker {
+  0%, 100% { transform: scaleY(1); opacity: 0.95; }
+  50% { transform: scaleY(0.65); opacity: 0.6; }
+}
+.rocket-flame {
+  transform-origin: 13px 24px;
+  animation: flame-flicker 0.22s ease-in-out infinite;
+}
+.rocket-ship {
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.7));
+}
+
+/* ---------- ambient beams (Framer-style constant motion) ---------- */
+.beam-line {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.09);
+}
+@keyframes beam-travel {
+  from { left: -18%; }
+  to { left: 118%; }
+}
+.beam-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 18%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.9), rgba(167, 139, 250, 0.8), transparent);
+  animation: beam-travel 7s linear infinite;
+}
+.beam-line.slow::after {
+  animation-duration: 11s;
+  animation-delay: 2.4s;
+}
+html.light .beam-line { background: rgba(11, 18, 32, 0.09); }
+
+/* idle border shimmer — one hero panel per section stays alive without hover */
+@keyframes idle-spin {
+  to { --spin: 360deg; }
+}
+.idle-shimmer {
+  position: relative;
+}
+.idle-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--spin),
+    transparent 0deg,
+    rgba(56, 189, 248, 0.4) 30deg,
+    rgba(167, 139, 250, 0.3) 60deg,
+    transparent 95deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: idle-spin 9s linear infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-line::after, .idle-shimmer::after, .rocket-flame {
+    animation: none;
+  }
+}
+
 /* ---------- section label ---------- */
 .section-index {
   font-family: var(--font-mono);
