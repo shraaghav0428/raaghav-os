@@ -7,20 +7,21 @@ export default function Beyond() {
     <>
       <SectionShell
         id="beyond"
-        index="08 · Beyond Product"
-        title="The why behind the what."
-        subtitle="Hobbies are frameworks too. Each one trains something the day job needs."
+        index="07 · Beyond Work"
+        title="Hobbies are frameworks too."
       >
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {beyond.map((b, i) => (
-            <Reveal key={b.name} delay={(i % 3) * 80}>
-              <div className="glass card-hover rounded-2xl p-6 h-full">
-                <div className="text-3xl">{b.icon}</div>
-                <h3 className="mt-3 font-[family-name:var(--font-heading)] text-lg font-semibold">
-                  {b.name}
-                </h3>
-                <p className="mt-2 text-sm text-slate-300 font-light italic leading-relaxed">
-                  “{b.why}”
+            <Reveal key={b.name} delay={(i % 3) * 60}>
+              <div className="glass spot rounded-2xl p-6 h-full">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl text-accent">{b.icon}</span>
+                  <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold">
+                    {b.name}
+                  </h3>
+                </div>
+                <p className="mt-3 text-sm text-slate-300 font-light leading-relaxed">
+                  {b.why}
                 </p>
               </div>
             </Reveal>
@@ -30,10 +31,10 @@ export default function Beyond() {
         {!recommendations[0]?.placeholder && (
           <Reveal delay={120}>
             <div className="mt-16">
-              <div className="section-index mb-6">09 · What people say</div>
+              <div className="section-index mb-6">What people say</div>
               <div className="grid md:grid-cols-2 gap-4">
                 {recommendations.map((r) => (
-                  <div key={r.name} className="glass card-hover rounded-2xl p-7">
+                  <div key={r.name} className="glass spot rounded-2xl p-7">
                     <p className="text-[15px] text-slate-200 font-light leading-relaxed italic">
                       “{r.quote}”
                     </p>
@@ -49,11 +50,11 @@ export default function Beyond() {
         )}
       </SectionShell>
 
-      <section id="contact" className="relative z-10 max-w-4xl mx-auto px-6 pb-32 pt-8">
+      <section id="contact" className="relative z-10 max-w-4xl mx-auto px-6 pb-32 pt-4">
         <Reveal>
           <div className="glass-strong rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden">
             <div
-              className="absolute -top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full opacity-25 blur-[100px] pointer-events-none"
+              className="absolute -top-24 left-1/2 -translate-x-1/2 w-[440px] h-[440px] rounded-full opacity-25 blur-[100px] pointer-events-none"
               style={{ background: "radial-gradient(circle, #0070bb, transparent 70%)" }}
               aria-hidden
             />
@@ -61,7 +62,7 @@ export default function Beyond() {
               Let&apos;s build something meaningful.
             </h2>
             <p className="relative mt-4 text-slate-400 font-light">
-              Open to AI Product Manager & Senior PM conversations · {identity.location}
+              Senior PM · AI-native · {identity.location}
             </p>
             <div className="relative mt-9 flex flex-wrap justify-center gap-4">
               <a
@@ -88,7 +89,7 @@ export default function Beyond() {
               </a>
             </div>
             <div className="relative mt-10 font-[family-name:var(--font-mono)] text-[11px] text-slate-600">
-              RAAGHAV OS · designed & built with Claude Code · try typing{" "}
+              RAAGHAV OS · built with Claude Code · psst — type{" "}
               <span className="text-slate-400">whoami</span>
             </div>
           </div>

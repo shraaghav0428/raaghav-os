@@ -1,12 +1,13 @@
 // RAAGHAV OS — single source of truth.
 // Every section of the site and the AI assistant's knowledge base reads from here.
+// Copy rules: outcome first, one idea per line, written for founders / product leaders / recruiters.
 
 export const identity = {
   name: "RAAGHAV",
   fullName: "Raaghav S.H",
   roles: ["Product Manager", "Systems Thinker", "AI Builder"],
   tagline:
-    "Designing products where technology, business and human behaviour intersect.",
+    "I build products where technology, business and human behaviour intersect.",
   location: "Bangalore, India",
   email: "shraaghav@gmail.com",
   phone: "+91 99406 75689",
@@ -16,295 +17,247 @@ export const identity = {
 };
 
 export const heroMetrics = [
-  { value: "7+", label: "Years Experience" },
-  { value: "0→1", label: "Products Built" },
-  { value: "₹730 Cr", label: "RFQ Pipeline" },
+  { value: "7+", label: "Years in Product" },
+  { value: "0→1", label: "Platforms Launched" },
+  { value: "₹730 Cr", label: "RFQ Pipeline Built" },
   { value: "1", label: "Patent Filed" },
-  { value: "AI", label: "Builder" },
+  { value: "4", label: "AI Products Shipped" },
 ];
 
 export const journey = [
   {
-    era: "2018 – 2020",
+    era: "2018",
     title: "Business Analyst",
-    org: "Run Adam Sports · Chennai",
-    story:
-      "Started in a B2C/B2B2C sports & fitness marketplace (~15,000 registrations). Learned the fundamentals — sprint ceremonies, backlog prioritization, working shoulder-to-shoulder with UX. Discovered that the interesting problems live between business and technology.",
+    org: "Run Adam Sports",
+    hook: "Learned product fundamentals on a 15,000-user sports marketplace.",
+    detail:
+      "Sprint ceremonies, backlog ownership, UX collaboration — and the realization that the best problems live between business and technology.",
   },
   {
-    era: "2021 – 2022",
-    title: "Marketplace PM",
-    org: "Matex Technologies · Chennai",
-    story:
-      "PM for a B2B sourcing marketplace SaaS — 80 corporates, 10,000+ vendors, ₹330 Cr+ procurement value, ₹33 Cr+ savings across 11,000 RFQs. Scaled from 1 to 20 corporate clients through product-led growth and a UX redesign; automated 1M+ SKUs via API integrations.",
+    era: "2021",
+    title: "Product Manager",
+    org: "Matex Technologies",
+    hook: "Scaled a B2B sourcing marketplace from 1 to 20 corporate clients.",
+    detail:
+      "₹330 Cr+ procurement value across 11,000 RFQs, ₹33 Cr+ in client savings, 1M+ SKUs automated through API integrations.",
   },
   {
-    era: "2022 – 2026",
-    title: "Manufacturing Platform PM",
-    org: "Machine Maze · Bangalore",
-    story:
-      "Led the 0-to-1 build and launch of Precision X — a full-stack B2B platform digitizing the custom manufacturing lifecycle from RFQ to delivery. Scaled the RFQ pipeline 21x from ₹34 Cr to ₹730 Cr, filed an India patent and Global PCT application as named inventor, and led product strategy through investor funding discussions.",
+    era: "2022",
+    title: "Senior Product Manager",
+    org: "Machine Maze",
+    hook: "Built Precision X from zero — and scaled its pipeline 21x.",
+    detail:
+      "First and only PM. Digitized the custom-manufacturing lifecycle end to end, grew RFQ pipeline from ₹34 Cr to ₹730 Cr, filed a patent, and carried the product story into investor funding discussions.",
   },
   {
-    era: "2025 – Now",
+    era: "2025",
     title: "AI Product Builder",
-    org: "Independent · Claude, Gemini, Vercel",
-    story:
-      "Without writing traditional code, shipped AI-powered products end-to-end — an AI procurement analyst, a daily word game with an AI hint engine, a financial freedom calculator, an AI PDF editor. The tools changed. The craft is the same: understand the user, ship, iterate.",
+    org: "Independent",
+    hook: "Shipped 4 AI products end-to-end — without a coding background.",
+    detail:
+      "ProcureIQ, WordClimb, a financial calculator, an AI PDF editor — designed, built and deployed solo with Claude, Gemini and Vercel. Proof that AI-native building is a PM skill now.",
   },
   {
     era: "Next",
     title: "AI Product Leader",
-    org: "The road ahead",
-    story:
-      "Building toward products where AI agents, workflows and human judgment compound — bringing manufacturing-grade systems thinking to AI-native products.",
+    org: "The next chapter",
+    hook: "Bringing systems thinking to products where AI agents do real work.",
+    detail:
+      "The thesis: platform first, data second, intelligence third, agents last. Most companies skip steps. I don't.",
   },
 ];
 
 export const frameworks = [
   {
-    title: "Product Discovery",
+    title: "Discovery",
     icon: "◎",
     summary: "Fall in love with the problem, not the demo.",
     detail:
-      "Every Precision X module started with sitting next to the person doing the job — feasibility engineers, pricing teams, sales. I map the workflow as it actually happens (not as the org chart says it happens), find where time and trust leak, and only then talk solutions. Discovery output is a crisp problem statement with evidence, not a feature list.",
+      "Every Precision X module started by sitting next to the person doing the job. Output: a crisp problem statement with evidence — never a feature list.",
   },
   {
-    title: "Root Cause Analysis",
+    title: "Root Cause",
     icon: "⌘",
     summary: "Symptoms are loud. Causes are quiet.",
     detail:
-      "When RFQ conversion stalled, the loud answer was 'we need more leads.' The quiet answer, found by walking the funnel stage by stage, was friction inside feasibility turnaround. Fixing workflow bottlenecks — not marketing — took average feasibility TaT to 27 hours and helped scale the pipeline 21x.",
+      "When RFQ conversion stalled, everyone said 'more leads.' Walking the funnel found the real leak: feasibility turnaround. Fixing it drove the 21x pipeline.",
   },
   {
     title: "Prioritization",
     icon: "≡",
     summary: "Sequencing is strategy made visible.",
     detail:
-      "Precision X's roadmap had 17 modules; we shipped 7 first. The filter: does this module unblock revenue-critical workflow today, and does it produce the data a future intelligence layer needs? Priority isn't a score in a spreadsheet — it's an argument about what compounds.",
+      "17 planned modules, 7 shipped first. The filter: does it unblock revenue today, and does it create the data tomorrow's AI layer needs?",
   },
   {
     title: "Trade-offs",
     icon: "⇄",
     summary: "Every yes is ten silent nos.",
     detail:
-      "Ship the BOM workflow or harden price discovery? Serve the loudest customer or the largest segment? I make trade-offs explicit — write down what we're NOT doing and why — so the team debates the decision once instead of relitigating it every sprint.",
+      "I write down what we're NOT doing and why — so the team debates a decision once, not every sprint.",
   },
   {
-    title: "Product Strategy",
+    title: "Strategy",
     icon: "◆",
-    summary: "Platform first. Intelligence second. Agents third.",
+    summary: "Platform → Data → Intelligence → Agents.",
     detail:
-      "Precision X's strategy was layered: digitize workflows (platform), use the resulting data for design & costing intelligence, then introduce AI copilots and agents on top. You can't bolt AI onto a business that hasn't digitized its ground truth. Strategy is choosing the order of operations.",
+      "You can't bolt AI onto a business that hasn't digitized its ground truth. Strategy is choosing the order of operations.",
   },
   {
     title: "Metrics",
     icon: "∿",
-    summary: "Define success before you build. Validate after you ship.",
+    summary: "Define success before you build.",
     detail:
-      "Every release had metrics defined upfront — feasibility TaT, RFQ-to-quote conversion, vendor allocation rate, adoption depth by team. I built the investor KPI dashboard that became a key artifact in a VC funding round. Metrics inform; users decide.",
+      "Every release shipped with metrics agreed upfront and validated after. My KPI dashboard became a key artifact in a VC funding round.",
   },
   {
     title: "Execution",
     icon: "▶",
-    summary: "Execution compounds. Shipping is a habit, not an event.",
+    summary: "A 0→1 platform is forty 0→0.1s.",
     detail:
-      "Owned the full lifecycle on every release — discovery, PRD, UX/UI, GTM, success metrics. Iterative releases with real users (dogfooding with internal teams) beat big-bang launches. A 0-to-1 platform is really forty 0-to-0.1s shipped relentlessly.",
+      "Small releases, internal dogfooding, relentless iteration. In B2B, every module that works buys permission for the next one.",
   },
   {
-    title: "AI Product Thinking",
+    title: "AI Products",
     icon: "✳",
-    summary: "AI should reduce cognitive load, not add novelty.",
+    summary: "Trust beats cleverness.",
     detail:
-      "ProcureIQ's rule: answer procurement questions exceptionally well, politely decline everything else. Trust comes from explainability — every recommendation traceable to data, every trade-off named. The bar for AI products isn't 'impressive,' it's 'defensible.'",
+      "ProcureIQ answers procurement questions exceptionally well — and politely declines everything else. Explainable, defensible, predictable.",
   },
 ];
 
 export const caseStudy = {
   company: "Machine Maze",
   product: "Precision X",
-  role: "Senior Product Manager — first and only PM, 0→1",
+  role: "First and only PM · 0→1",
   problem:
-    "Global OEMs sourcing custom manufacturing from India operated on email, spreadsheets and tribal knowledge. Quoting a single RFQ meant days of back-and-forth between sales, feasibility engineers, pricing teams and partner factories — slow, opaque and impossible to scale.",
+    "Global OEMs sourced custom manufacturing over email and spreadsheets. One RFQ took days of back-and-forth across sales, engineering and pricing.",
   vision:
-    "Make on-demand manufacturing transparent for global OEMs — a platform layer first, then design & costing intelligence, then AI copilots and agents on top of the digitized data.",
+    "Make on-demand manufacturing transparent — digitize the workflow first, then layer costing intelligence and AI on the data.",
   solution:
-    "Precision X — a full-stack B2B platform digitizing the end-to-end custom manufacturing lifecycle: RFQ feasibility, reviews & approvals, department assignments, price discovery, quote comparison, proposal creation and customer purchase orders. Integrated the Autodesk 3D viewer so engineers evaluate STEP files without leaving the platform, and Zoho CRM so sales pushes RFQs straight in.",
+    "A full-stack B2B platform covering the lifecycle end to end: RFQ feasibility, price discovery, quote comparison, proposals and purchase orders — with 3D CAD viewing and CRM built in.",
   challenges: [
-    "Zero playbook — no PM above me, no existing product, a domain (precision manufacturing) I had to learn from machinists up",
-    "Users who lived in Excel and trusted nothing digital — adoption had to be earned workflow by workflow",
-    "Sequencing 17 planned modules with a small engineering team — only ~30% of the roadmap released, chosen for maximum compounding",
-    "Translating shop-floor complexity into narratives investors and the board could act on",
+    "No playbook, no PM above me, a domain learned from machinists up",
+    "Users who lived in Excel — adoption earned workflow by workflow",
+    "Small team, 17 modules planned — shipped the 7 that compound",
+    "Translating shop-floor complexity into boardroom narratives",
   ],
   outcomes: [
-    { value: "₹34 Cr → ₹730 Cr", label: "RFQ pipeline scaled 21x" },
-    { value: "27 hrs", label: "Average feasibility turnaround" },
-    { value: "1 + PCT", label: "India patent filed (App No. 202541011592) + Global PCT — named inventor" },
-    { value: "400", label: "Verified partners onboarded via Partner Hub" },
-    { value: "5x", label: "Vendor allocation increase; 250+ factories indexed" },
-    { value: "VC round", label: "KPI dashboard & product story used in funding discussions" },
+    { value: "21x", label: "RFQ pipeline — ₹34 Cr to ₹730 Cr" },
+    { value: "27 hrs", label: "Avg. feasibility turnaround" },
+    { value: "Patent", label: "India + Global PCT filed — named inventor" },
+    { value: "400", label: "Verified partners onboarded" },
+    { value: "5x", label: "Vendor allocation increase" },
+    { value: "VC round", label: "Product story used in funding" },
   ],
   lessons: [
-    "Adoption is a product feature. If the feasibility engineer doesn't open it daily, nothing else matters.",
-    "Digitize the ground truth before promising intelligence — AI layers are only as good as the workflow data beneath them.",
-    "In B2B, trust ships in small releases. Every module that worked bought permission for the next one.",
+    "Adoption is a product feature.",
+    "Digitize the ground truth before promising intelligence.",
+    "In B2B, trust ships in small releases.",
   ],
   patentNote:
-    "India patent Application No. 202541011592 with a Global PCT application — covering platform workflow innovation. Led the complete IP documentation and filing as named inventor.",
+    "India patent App No. 202541011592 + Global PCT — led the complete IP documentation and filing as named inventor.",
 };
 
 export const products = [
   {
     name: "Precision X",
     kind: "B2B Manufacturing Platform",
-    status: "Shipped · Machine Maze",
-    problem: "Custom manufacturing lifecycle ran on email and spreadsheets.",
-    users: "Global OEMs, feasibility engineers, pricing teams, partner factories",
-    solution:
-      "Full-stack platform digitizing RFQ → feasibility → pricing → proposal → purchase order, with 3D CAD viewing and CRM integration.",
-    outcome: "₹730 Cr RFQ pipeline · patent filed · investor-ready platform story",
-    stack: ["B2B Platform", "Autodesk APIs", "Zoho CRM", "0→1"],
+    status: "Shipped",
+    tagline: "The ₹730 Cr platform. Built from zero.",
+    detail:
+      "Digitized the entire custom-manufacturing lifecycle for global OEMs — RFQ to purchase order. Patent filed. Investor-ready.",
+    stack: ["0→1", "B2B Platform", "Patent"],
     link: null,
     github: null,
+    size: "large",
   },
   {
     name: "ProcureIQ",
     kind: "AI Procurement Analyst",
-    status: "Live prototype",
-    problem:
-      "After quotations arrive, buyers still manually interpret pricing, delivery risk and trade-offs before every award decision.",
-    users: "Procurement managers and leadership",
-    solution:
-      "An AI analyst that sits on top of supplier comparison — ask in natural language, get evidence-backed, explainable recommendations. Answers procurement questions exceptionally well; politely declines everything else.",
-    outcome: "Decision-support AI with full traceability — built solo, no code background",
-    stack: ["Next.js", "Gemini API", "Vercel", "PDF/Excel export"],
+    status: "Live",
+    tagline: "Ask your supplier data anything. Get evidence back.",
+    detail:
+      "An AI analyst on top of supplier comparison — natural-language questions, explainable recommendations, zero hallucinated confidence.",
+    stack: ["Next.js", "AI", "Vercel"],
     link: "https://procureiq-alpha.vercel.app/",
     github: null,
+    size: "large",
   },
   {
     name: "WordClimb",
-    kind: "Daily Word Game + AI Hints",
+    kind: "Daily Word Game",
     status: "Live",
-    problem: "Wordle ends in one round. Players want progression.",
-    users: "Daily puzzle players worldwide — same words, same UTC day",
-    solution:
-      "Four escalating levels (4→7 letters). After 2 attempts, an AI Assist powered by Gemini reads your guesses and colour feedback and nudges without spoiling.",
-    outcome: "Shipped end-to-end: game design, React build, serverless AI backend",
-    stack: ["React 18", "Gemini 2.0 Flash", "Vercel serverless", "GitHub Pages"],
+    tagline: "Wordle, if it had a boss ladder — with an AI coach.",
+    detail:
+      "Four escalating levels daily. After two tries, a Gemini-powered assist reads your board and nudges without spoiling.",
+    stack: ["React", "Gemini", "Serverless"],
     link: "https://shraaghav0428.github.io/WordClimb/",
     github: "https://github.com/shraaghav0428/WordClimb",
+    size: "small",
   },
   {
-    name: "Financial Freedom Calculator",
-    kind: "Personal Finance Modeler",
+    name: "Financial Freedom",
+    kind: "Wealth Modeler",
     status: "Live",
-    problem: "Compound interest and SIP planning are abstract until you can see them.",
-    users: "Anyone planning long-term wealth",
-    solution:
-      "Multi-currency compound interest modeler with SIP/goal tracking and interactive visualizations.",
-    outcome: "A tool I actually use for my own investing decisions",
-    stack: ["Web app", "Chart.js", "GitHub"],
+    tagline: "Compounding, made visible.",
+    detail:
+      "Multi-currency SIP and goal modeling with interactive charts. I use it for my own investing.",
+    stack: ["Web App", "Chart.js"],
     link: null,
     github: "https://github.com/shraaghav0428/RaaghavFinancialFreedom",
+    size: "small",
   },
   {
     name: "AI PDF Editor",
     kind: "Browser AI Tool",
     status: "Prototype",
-    problem: "Replacing a logo or region in a PDF usually needs desktop software.",
-    users: "Anyone editing brand assets in documents",
-    solution:
-      "Upload a PDF, select regions, replace or erase — Gemini-powered edits triggered on user actions, in the browser.",
-    outcome: "Proof that focused AI beats general-purpose tools for narrow jobs",
-    stack: ["Gemini API", "Vercel"],
+    tagline: "Select. Replace. Done.",
+    detail:
+      "Region-level PDF editing powered by Gemini — no desktop software, runs in the browser.",
+    stack: ["Gemini", "Vercel"],
     link: null,
     github: null,
+    size: "small",
   },
   {
     name: "RAAGHAV OS",
-    kind: "This website",
-    status: "You are here",
-    problem: "Portfolios get scanned in 2 minutes and forgotten.",
-    users: "Founders, product leaders, hiring managers — you",
-    solution:
-      "An immersive personal operating system with a live AI assistant trained on my work, built with Claude Code.",
-    outcome: "My best product case study is the one you're inside right now",
-    stack: ["Next.js", "Claude Code", "Gemini API", "Vercel"],
+    kind: "This Website",
+    status: "You're in it",
+    tagline: "My best case study is the one you're inside.",
+    detail:
+      "An AI-powered portfolio with a live assistant grounded in my real work — designed and built with Claude Code.",
+    stack: ["Next.js", "Claude Code", "LLM"],
     link: null,
     github: null,
+    size: "small",
   },
 ];
 
 export const aiLab = [
-  {
-    name: "Claude Code",
-    status: "Daily driver",
-    note: "Agentic building — this entire site, resume automation, job-search workflows. My highest-leverage tool.",
-  },
-  {
-    name: "AI Agents & MCP",
-    status: "Learning deeply",
-    note: "Model Context Protocol, tool-calling patterns, multi-agent orchestration — studying how agents become products.",
-  },
-  {
-    name: "Gemini API",
-    status: "In production",
-    note: "Powers WordClimb hints, ProcureIQ analysis and the AI PDF Editor via Vercel serverless functions.",
-  },
-  {
-    name: "RAG Systems",
-    status: "Applied",
-    note: "The assistant on this site answers from a structured knowledge base of my actual work — grounded, not generic.",
-  },
-  {
-    name: "Prompt & Context Engineering",
-    status: "Practicing",
-    note: "Designing system prompts that make AI predictable — ProcureIQ's 'decline everything off-topic' rule was a product decision.",
-  },
-  {
-    name: "AI Product Strategy",
-    status: "Core thesis",
-    note: "Platform → data → intelligence → agents. Sequencing AI into businesses that haven't digitized yet.",
-  },
+  { name: "Claude Code", status: "daily driver" },
+  { name: "AI Agents", status: "building" },
+  { name: "MCP", status: "learning" },
+  { name: "Gemini API", status: "in production" },
+  { name: "RAG", status: "applied — this site" },
+  { name: "Prompt Engineering", status: "practicing" },
+  { name: "Vercel", status: "in production" },
+  { name: "Cursor / VS Code", status: "daily" },
 ];
 
+export const aiLabNote =
+  "Not a skills list — a live workshop. Everything here runs in a shipped product or an active experiment.";
+
 export const playbook = [
-  {
-    topic: "Discovery",
-    card: "Sit with the user doing the job. Map the workflow as it happens, not as the org chart claims. Evidence before opinions.",
-  },
-  {
-    topic: "Roadmapping",
-    card: "A roadmap is a story about compounding — each release should make the next one cheaper or smarter.",
-  },
-  {
-    topic: "Prioritization",
-    card: "Ask two questions: does it unblock revenue-critical workflow now, and does it produce data the future needs?",
-  },
-  {
-    topic: "AI",
-    card: "Narrow scope + explainability beats broad cleverness. An AI that knows when to decline earns trust faster than one that always answers.",
-  },
-  {
-    topic: "Stakeholders",
-    card: "Translate, don't transmit. The board needs a narrative, engineering needs constraints, users need to feel heard. Same truth, three languages.",
-  },
-  {
-    topic: "Metrics",
-    card: "Define success before you build; validate after you ship. Data informs, users decide.",
-  },
-  {
-    topic: "Execution",
-    card: "Ship in small releases that earn trust. Dogfood internally. A 0-to-1 platform is forty 0-to-0.1s.",
-  },
-  {
-    topic: "Product Sense",
-    card: "Good products reduce cognitive load. Every screen should answer: what should I do next, and why should I trust it?",
-  },
-  {
-    topic: "Decision Making",
-    card: "Write down what you're NOT doing and why. Prototype before debating. Reversible decisions fast, irreversible ones slow.",
-  },
+  { topic: "Discovery", card: "Sit with the user doing the job. Evidence before opinions." },
+  { topic: "Roadmap", card: "Each release should make the next one cheaper or smarter." },
+  { topic: "Priority", card: "Unblock revenue now. Create data for later." },
+  { topic: "AI", card: "An AI that knows when to decline earns trust faster than one that always answers." },
+  { topic: "Stakeholders", card: "Same truth, three languages — board, engineering, users." },
+  { topic: "Metrics", card: "Data informs. Users decide." },
+  { topic: "Execution", card: "Dogfood internally. Ship small. Compound." },
+  { topic: "Product Sense", card: "Every screen should answer: what next, and why trust it?" },
+  { topic: "Decisions", card: "Reversible calls fast. Irreversible calls slow." },
 ];
 
 export const principles = [
@@ -317,43 +270,18 @@ export const principles = [
 ];
 
 export const beyond = [
-  {
-    name: "Chess",
-    icon: "♞",
-    why: "I enjoy solving problems with incomplete information — every position is a prioritization exercise.",
-  },
-  {
-    name: "Investments",
-    icon: "📈",
-    why: "I think in decades, not quarters. Compounding is the only strategy I've never had to pivot.",
-  },
-  {
-    name: "Gym",
-    icon: "🏋",
-    why: "Consistency compounds. 7 AM, five days a week — the discipline transfers to everything else.",
-  },
-  {
-    name: "Music",
-    icon: "♪",
-    why: "Pattern and structure underneath what feels effortless — the same thing good products do.",
-  },
-  {
-    name: "Travel",
-    icon: "✈",
-    why: "New contexts break assumptions. The fastest way to learn how differently people solve the same problem.",
-  },
-  {
-    name: "Family",
-    icon: "☀",
-    why: "Monthly trips to Chennai to see my parents. Non-negotiable — some roadmap items never get deprioritized.",
-  },
+  { name: "Chess", icon: "♞", why: "Deciding well with incomplete information." },
+  { name: "Investing", icon: "◔", why: "I think in decades, not quarters." },
+  { name: "Gym", icon: "▲", why: "Consistency compounds. 7 AM, five days a week." },
+  { name: "Music", icon: "♪", why: "Structure underneath what feels effortless." },
+  { name: "Travel", icon: "✈", why: "New contexts break old assumptions." },
+  { name: "Family", icon: "☀", why: "Chennai, every month. Never deprioritized." },
 ];
 
 export const recommendations = [
   // PLACEHOLDER — replace with real LinkedIn recommendations before shipping.
   {
-    quote:
-      "[Placeholder — LinkedIn recommendation to be added]",
+    quote: "[Placeholder — LinkedIn recommendation to be added]",
     name: "Coming soon",
     title: "LinkedIn recommendations",
     placeholder: true,
@@ -362,7 +290,7 @@ export const recommendations = [
 
 export const education = [
   { degree: "MBA", school: "University of Sheffield, UK" },
-  { degree: "PGDM — Marketing Management", school: "LIBA, India" },
+  { degree: "PGDM — Marketing Mgmt", school: "LIBA, India" },
   { degree: "BSc. Visual Communication", school: "SRM University, India" },
 ];
 
@@ -374,12 +302,12 @@ export const certifications = [
 
 export const navSections = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
+  { id: "about", label: "Journey" },
+  { id: "experience", label: "Case Study" },
   { id: "products", label: "Products" },
   { id: "ailab", label: "AI Lab" },
   { id: "thinking", label: "Thinking" },
-  { id: "beyond", label: "Beyond Work" },
+  { id: "beyond", label: "Beyond" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -391,7 +319,7 @@ export function buildKnowledgeBase(): string {
 ${identity.fullName} — Senior Product Manager based in ${identity.location}. 7+ years across B2B SaaS, manufacturing tech and marketplace products, mostly in high-growth startup environments. He has never written traditional code, yet ships AI-powered products end-to-end using Claude, Gemini, VS Code, GitHub and Vercel. Contact: ${identity.email} · LinkedIn: ${identity.linkedin} · GitHub: ${identity.github}
 
 # CAREER JOURNEY
-${journey.map((j) => `- ${j.era} · ${j.title} @ ${j.org}: ${j.story}`).join("\n")}
+${journey.map((j) => `- ${j.era} · ${j.title} @ ${j.org}: ${j.hook} ${j.detail}`).join("\n")}
 
 # PRECISION X / MACHINE MAZE (flagship case study)
 Problem: ${caseStudy.problem}
@@ -401,17 +329,17 @@ Challenges: ${caseStudy.challenges.join(" | ")}
 Outcomes: ${caseStudy.outcomes.map((o) => `${o.value} — ${o.label}`).join(" | ")}
 Lessons: ${caseStudy.lessons.join(" | ")}
 Patent: ${caseStudy.patentNote}
-Modules shipped: RFQ Feasibility, Reviews & approvals, Department assignments, Price Discovery, Quote comparison, Proposal Creation, Customer Purchase Orders. Roadmap pending: BOM workflows, partner POs, live production tracking, scheduling, quality, inventory, logistics, invoicing, analytics. Only ~30% of roadmap released. Also built margin reconciliation: Customer PO → Vendor PO → Vendor Invoice → Machine Maze Invoice chain surfacing part-level and PO-level margin in real time.
+Modules shipped: RFQ Feasibility, Reviews & approvals, Department assignments, Price Discovery, Quote comparison, Proposal Creation, Customer Purchase Orders. Roadmap pending: BOM workflows, partner POs, live production tracking, scheduling, quality, inventory, logistics, invoicing, analytics. Only ~30% of roadmap released. Also built margin reconciliation: Customer PO → Vendor PO → Vendor Invoice → Machine Maze Invoice chain surfacing part-level and PO-level margin in real time. Additional facts: scaled RFQ pipeline 21x maintaining 27-hour average feasibility turnaround; integrated Autodesk 3D viewer for STEP files and Zoho CRM for RFQ push; built Partner Hub (supplier onboarding with GST verification, 400 verified partners); investor KPI dashboard was a key artifact in a VC funding round.
 IMPORTANT ACCURACY RULES: Precision X is a B2B platform used by Machine Maze and its customers/partners — never call it "SaaS". Raaghav's AI work is API integration and AI-native product building — never claim ML/machine-learning engineering experience.
 
 # HOW HE THINKS (frameworks)
 ${frameworks.map((f) => `- ${f.title}: ${f.summary} ${f.detail}`).join("\n")}
 
 # PRODUCTS BUILT
-${products.map((p) => `- ${p.name} (${p.kind}, ${p.status}): Problem: ${p.problem} Solution: ${p.solution} Outcome: ${p.outcome}${p.link ? ` Live: ${p.link}` : ""}`).join("\n")}
+${products.map((p) => `- ${p.name} (${p.kind}, ${p.status}): ${p.tagline} ${p.detail}${p.link ? ` Live: ${p.link}` : ""}`).join("\n")}
 
 # AI LAB (current learning)
-${aiLab.map((a) => `- ${a.name} [${a.status}]: ${a.note}`).join("\n")}
+${aiLab.map((a) => `- ${a.name}: ${a.status}`).join("\n")}
 
 # PRODUCT PLAYBOOK
 ${playbook.map((p) => `- ${p.topic}: ${p.card}`).join("\n")}

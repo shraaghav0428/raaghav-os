@@ -11,42 +11,44 @@ export default function Frameworks() {
   return (
     <SectionShell
       id="thinking"
-      index="02 · How I Think"
+      index="05 · How I Think"
       title="Frameworks, not buzzwords."
-      subtitle="Skills lists say nothing. These are the mental models I actually use — each one earned on a real product. Click any card."
+      subtitle="Eight mental models, each earned on a real product."
     >
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {frameworks.map((f, i) => {
           const open = openIdx === i;
           return (
-            <Reveal key={f.title} delay={(i % 4) * 70}>
+            <Reveal key={f.title} delay={(i % 4) * 60}>
               <button
                 onClick={() => setOpenIdx(open ? null : i)}
-                className={`glass card-hover rounded-2xl p-5 text-left w-full transition-all duration-500 ${
+                className={`glass spot rounded-2xl p-5 text-left w-full h-full transition-colors duration-500 ${
                   open ? "border-accent/50 bg-primary/10" : ""
                 }`}
                 aria-expanded={open}
               >
-                <div className="text-accent text-2xl font-[family-name:var(--font-mono)]">
-                  {f.icon}
+                <div className="flex items-center justify-between">
+                  <span className="text-accent text-xl font-[family-name:var(--font-mono)]">
+                    {f.icon}
+                  </span>
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-slate-600">
+                    {open ? "−" : "+"}
+                  </span>
                 </div>
-                <h3 className="mt-3 font-[family-name:var(--font-heading)] text-lg font-semibold">
+                <h3 className="mt-3 font-[family-name:var(--font-heading)] text-base sm:text-lg font-semibold">
                   {f.title}
                 </h3>
-                <p className="mt-1.5 text-sm text-slate-400 font-light">{f.summary}</p>
+                <p className="mt-1 text-[13px] text-slate-400 font-light">{f.summary}</p>
                 <div
                   className={`grid transition-all duration-500 ease-out ${
                     open ? "grid-rows-[1fr] mt-3 opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-[13.5px] leading-relaxed text-slate-300 border-t border-slate-700/60 pt-3">
+                    <p className="text-[13px] leading-relaxed text-slate-300 border-t border-slate-700/60 pt-3">
                       {f.detail}
                     </p>
                   </div>
-                </div>
-                <div className="mt-3 font-[family-name:var(--font-mono)] text-[11px] text-accent/70">
-                  {open ? "− close" : "+ expand"}
                 </div>
               </button>
             </Reveal>

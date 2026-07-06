@@ -6,16 +6,15 @@ export default function PlaybookPrinciples() {
   return (
     <SectionShell
       id="playbook"
-      index="06 · Playbook"
-      title="Knowledge cards, not blog posts."
-      subtitle="The condensed operating manual. Nine topics, nine positions I'll defend in any product review."
+      index="06 · The Playbook"
+      title="Nine positions I'll defend in any product review."
     >
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {playbook.map((p, i) => (
-          <Reveal key={p.topic} delay={(i % 3) * 70}>
-            <div className="glass card-hover rounded-2xl p-6 h-full">
-              <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.25em] text-accent">
-                {String(i + 1).padStart(2, "0")} · {p.topic}
+          <Reveal key={p.topic} delay={(i % 3) * 60}>
+            <div className="glass spot rounded-2xl p-6 h-full">
+              <div className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.25em] text-accent">
+                {String(i + 1).padStart(2, "0")} / {p.topic}
               </div>
               <p className="mt-3 text-[15px] text-slate-200 font-light leading-relaxed">
                 {p.card}
@@ -25,14 +24,14 @@ export default function PlaybookPrinciples() {
         ))}
       </div>
 
-      <Reveal delay={150}>
-        <div className="mt-16">
-          <div className="section-index mb-6">07 · Principles</div>
-          <div className="flex flex-wrap gap-3">
-            {principles.map((p) => (
+      {/* principles marquee */}
+      <Reveal delay={120}>
+        <div className="mt-14 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+          <div className="marquee-track gap-4 py-2">
+            {[...principles, ...principles].map((p, i) => (
               <span
-                key={p}
-                className="glass card-hover rounded-full px-6 py-3 text-sm sm:text-base font-[family-name:var(--font-heading)] font-medium"
+                key={i}
+                className="glass rounded-full px-7 py-3 text-sm sm:text-base font-[family-name:var(--font-heading)] font-medium whitespace-nowrap"
               >
                 {p}
               </span>

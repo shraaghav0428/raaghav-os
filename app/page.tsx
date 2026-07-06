@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Boot from "@/components/Boot";
 import ParticleField from "@/components/ParticleField";
+import CursorBlob from "@/components/CursorBlob";
+import SpotlightProvider from "@/components/SpotlightProvider";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Journey from "@/components/Journey";
@@ -24,14 +26,16 @@ export default function Home() {
     <main className="relative">
       {!booted && <Boot onDone={() => setBooted(true)} />}
       <ParticleField />
+      <CursorBlob />
+      <SpotlightProvider />
       {jarvis && <div className="jarvis-scanline" aria-hidden />}
       <Nav />
       <Hero />
       <Journey />
-      <Frameworks />
       <CaseStudyStrip />
       <Products />
       <AILab />
+      <Frameworks />
       <PlaybookPrinciples />
       <Beyond />
       <Orb onSecretUnlock={() => setSecret(true)} />

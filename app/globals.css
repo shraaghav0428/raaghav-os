@@ -47,48 +47,142 @@ body {
 
 /* ---------- glass ---------- */
 .glass {
-  background: rgba(17, 24, 39, 0.55);
+  background: rgba(17, 24, 39, 0.45);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 .glass-strong {
-  background: rgba(11, 17, 32, 0.82);
+  background: rgba(8, 13, 26, 0.85);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   border: 1px solid rgba(148, 163, 184, 0.16);
 }
 
-.card-hover {
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease, box-shadow 0.35s ease;
+/* ---------- spotlight cards (Linear-style) ---------- */
+.spot {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
 }
-.card-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 8px 40px -12px rgba(56, 189, 248, 0.25);
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(56, 189, 248, 0.1),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.spot:hover::before {
+  opacity: 1;
+}
+.spot:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.32);
+}
+
+/* ---------- aurora hero ---------- */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(-50%, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(-46%, 3%) rotate(4deg) scale(1.06); }
+  66% { transform: translate(-54%, -2%) rotate(-3deg) scale(0.97); }
+}
+.aurora {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 130vw;
+  height: 90vh;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 34% at 38% 40%, rgba(0, 112, 187, 0.24), transparent 70%),
+    radial-gradient(ellipse 38% 30% at 62% 34%, rgba(56, 189, 248, 0.14), transparent 70%),
+    radial-gradient(ellipse 30% 26% at 50% 60%, rgba(99, 102, 241, 0.1), transparent 70%);
+  filter: blur(40px);
+  animation: aurora-drift 16s ease-in-out infinite;
 }
 
 /* ---------- ambient grid ---------- */
 .bg-grid {
-  background-image: linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-image: linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 100%);
+}
+
+/* ---------- cursor blob (ShapeBlur-inspired) ---------- */
+.cursor-blob {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 340px;
+  border-radius: 42% 58% 55% 45% / 48% 44% 56% 52%;
+  background: radial-gradient(
+    circle at 45% 42%,
+    rgba(56, 189, 248, 0.1),
+    rgba(0, 112, 187, 0.06) 50%,
+    transparent 72%
+  );
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  animation: blob-morph 9s ease-in-out infinite;
+}
+@keyframes blob-morph {
+  0%, 100% { border-radius: 42% 58% 55% 45% / 48% 44% 56% 52%; }
+  33% { border-radius: 56% 44% 42% 58% / 44% 58% 42% 56%; }
+  66% { border-radius: 48% 52% 60% 40% / 56% 46% 54% 44%; }
+}
+
+/* ---------- gradient / shimmer text ---------- */
+.text-gradient {
+  background: linear-gradient(100deg, #f8fafc 30%, #38bdf8 48%, #f8fafc 66%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 110% 0; }
+  50% { background-position: -10% 0; }
 }
 
 /* ---------- reveal on scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(26px);
   transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- marquee ---------- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* ---------- orb ---------- */
@@ -146,7 +240,7 @@ body {
 
 /* ---------- glow text ---------- */
 .glow-blue {
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.45);
+  text-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
 }
 
 /* ---------- patent glow easter egg ---------- */
@@ -180,7 +274,7 @@ body.jarvis-mode .orb-core {
 /* ---------- section label ---------- */
 .section-index {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.28em;
   color: var(--color-accent);
   text-transform: uppercase;
@@ -191,7 +285,8 @@ body.jarvis-mode .orb-core {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orb-core, .orb-ring, .jarvis-scanline {
+  .orb-core, .orb-ring, .jarvis-scanline, .aurora, .cursor-blob,
+  .marquee-track, .text-gradient {
     animation: none;
   }
   html {
