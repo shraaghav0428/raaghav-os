@@ -6,6 +6,7 @@ import ParticleField from "@/components/ParticleField";
 import CursorBlob from "@/components/CursorBlob";
 import SpotlightProvider from "@/components/SpotlightProvider";
 import Nav from "@/components/Nav";
+import Controls from "@/components/Controls";
 import Hero from "@/components/Hero";
 import Journey from "@/components/Journey";
 import Frameworks from "@/components/Frameworks";
@@ -30,6 +31,7 @@ export default function Home() {
       <SpotlightProvider />
       {jarvis && <div className="jarvis-scanline" aria-hidden />}
       <Nav />
+      <Controls />
       <Hero />
       <Journey />
       <CaseStudyStrip />

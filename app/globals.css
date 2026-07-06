@@ -284,6 +284,109 @@ body.jarvis-mode .orb-core {
   margin-top: 0.6em;
 }
 
+/* ---------- tool mind map ---------- */
+.toolmap-core {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  fill: #f8fafc;
+  letter-spacing: 0.06em;
+}
+.toolmap-hublabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  fill: #38bdf8;
+}
+.toolmap-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: #94a3b8;
+  transition: fill 0.3s;
+}
+.toolmap-label.hot {
+  fill: #f8fafc;
+}
+.toolmap-label.claude {
+  fill: #cbd5e1;
+  font-weight: 600;
+}
+
+/* ============================================================
+   LIGHT THEME — html.light remaps the dark palette
+   ============================================================ */
+html.light {
+  --color-bg: #f2f6fb;
+  --color-ink: #0b1220;
+}
+html.light body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+html.light .glass {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(11, 18, 32, 0.08);
+}
+html.light .glass-strong {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(11, 18, 32, 0.1);
+}
+html.light .text-ink { color: #0b1220; }
+html.light .text-slate-200 { color: #1e293b; }
+html.light .text-slate-300 { color: #334155; }
+html.light .text-slate-400 { color: #475569; }
+html.light .text-slate-500 { color: #64748b; }
+html.light .text-slate-600 { color: #94a3b8; }
+html.light .bg-white\/5 { background: rgba(11, 18, 32, 0.05); }
+html.light .hover\:bg-white\/5:hover { background: rgba(11, 18, 32, 0.05); }
+html.light .border-slate-700,
+html.light .border-slate-700\/40,
+html.light .border-slate-700\/50,
+html.light .border-slate-700\/60 { border-color: rgba(11, 18, 32, 0.12); }
+html.light .border-t { border-color: rgba(11, 18, 32, 0.12); }
+html.light .bg-slate-800 { background: #d8e1ec; }
+html.light .bg-slate-700 { background: #c3cfdd; }
+html.light .text-accent { color: #0070bb; }
+html.light .section-index { color: #0070bb; }
+html.light .glow-blue { text-shadow: 0 0 40px rgba(0, 112, 187, 0.18); }
+html.light .text-gradient {
+  background: linear-gradient(100deg, #0b1220 30%, #0070bb 48%, #0b1220 66%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+html.light .bg-grid {
+  background-image: linear-gradient(rgba(0, 112, 187, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 112, 187, 0.05) 1px, transparent 1px);
+}
+html.light .aurora { opacity: 0.55; }
+html.light .cursor-blob {
+  background: radial-gradient(
+    circle at 45% 42%,
+    rgba(0, 112, 187, 0.09),
+    rgba(56, 189, 248, 0.05) 50%,
+    transparent 72%
+  );
+}
+html.light .spot::before {
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 112, 187, 0.08),
+    transparent 65%
+  );
+}
+html.light ::-webkit-scrollbar-track { background: #f2f6fb; }
+html.light ::-webkit-scrollbar-thumb { background: #c3cfdd; }
+html.light .toolmap-core { fill: #ffffff; }
+html.light .toolmap-label { fill: #475569; }
+html.light .toolmap-label.hot { fill: #0b1220; }
+html.light .toolmap-label.claude { fill: #1e293b; }
+html.light .toolmap-hublabel { fill: #0070bb; }
+html.light .bg-primary\/25 { background: rgba(0, 112, 187, 0.12); }
+html.light .bg-primary\/10 { background: rgba(0, 112, 187, 0.06); }
+html.light .bg-primary\/30 { background: rgba(0, 112, 187, 0.15); }
+
 @media (prefers-reduced-motion: reduce) {
   .orb-core, .orb-ring, .jarvis-scanline, .aurora, .cursor-blob,
   .marquee-track, .text-gradient {

@@ -26,6 +26,14 @@ export const heroMetrics = [
 
 export const journey = [
   {
+    era: "Age 10",
+    title: "The First Build",
+    org: "Living room floor",
+    hook: "Race circuits from toy train tracks — to make Hot Wheels go faster.",
+    detail:
+      "Long before PRDs, I was engineering roller coasters out of train tracks and household objects, iterating until the cars flew. The tools changed. The obsession with building things that work didn't.",
+  },
+  {
     era: "2018",
     title: "Business Analyst",
     org: "Run Adam Sports",
@@ -37,9 +45,9 @@ export const journey = [
     era: "2021",
     title: "Product Manager",
     org: "Matex Technologies",
-    hook: "Scaled a B2B sourcing marketplace from 1 to 20 corporate clients.",
+    hook: "Scaled a B2B sourcing platform from 1 to 20 corporate clients.",
     detail:
-      "₹330 Cr+ procurement value across 11,000 RFQs, ₹33 Cr+ in client savings, 1M+ SKUs automated through API integrations.",
+      "₹330 Cr+ procurement value across 11,000 RFQs, ₹33 Cr+ in documented client savings. The unlock wasn't the product — it was realizing the end user and the economic buyer aren't the same person, and pitching CEOs on savings instead of procurement teams on features.",
   },
   {
     era: "2022",
@@ -67,62 +75,64 @@ export const journey = [
   },
 ];
 
+// Each framework is backed by a real story (from actual interviews) — summary is the belief,
+// story is the receipt.
 export const frameworks = [
   {
     title: "Discovery",
     icon: "◎",
     summary: "Fall in love with the problem, not the demo.",
-    detail:
-      "Every Precision X module started by sitting next to the person doing the job. Output: a crisp problem statement with evidence — never a feature list.",
+    story:
+      "When I joined Machine Maze, RFQs lived in spreadsheets, email and WhatsApp. I spent weeks embedded with Sourcing, Production, KAMs and Quality before designing anything. That ground-level map became the workflow that scaled the pipeline 21x — with every decision on every RFQ logged and visible to leadership.",
   },
   {
     title: "Root Cause",
     icon: "⌘",
     summary: "Symptoms are loud. Causes are quiet.",
-    detail:
-      "When RFQ conversion stalled, everyone said 'more leads.' Walking the funnel found the real leak: feasibility turnaround. Fixing it drove the 21x pipeline.",
+    story:
+      "RFQ-to-quote was running at 4 weeks and customers were walking. The reported problem was 'sourcing is slow.' The real cause — found by sitting with the team — was supplier data too thin to match RFQs against. I redesigned vendor onboarding to capture capabilities, machinery and certifications, added supplier scoring — and turnaround fell from 4 weeks to 3 days.",
   },
   {
     title: "Prioritization",
     icon: "≡",
-    summary: "Sequencing is strategy made visible.",
-    detail:
-      "17 planned modules, 7 shipped first. The filter: does it unblock revenue today, and does it create the data tomorrow's AI layer needs?",
+    summary: "Build on facts, not one loud data point.",
+    story:
+      "A customer wanted assembly-level production tracking — a layered, ambiguous build. Before committing, I went to the factory floors and found even suppliers couldn't track it systematically. Sample size: one project. I made the case to keep the team on the 90% the product served well. Leadership bought in — and that one project never recurred.",
   },
   {
     title: "Trade-offs",
     icon: "⇄",
-    summary: "Every yes is ten silent nos.",
-    detail:
-      "I write down what we're NOT doing and why — so the team debates a decision once, not every sprint.",
+    summary: "Disagree, commit, then protect your team inside the decision.",
+    story:
+      "My CEO wanted the entire dev team in a customer demo during the final week of a critical sprint. I pushed back, lost, and then made the decision work: capped it at 2 hours, no overtime, team briefed on why it mattered. The customer — a Six Sigma Black Belt — signed within a week. The sprint still shipped on time.",
   },
   {
     title: "Strategy",
     icon: "◆",
     summary: "Platform → Data → Intelligence → Agents.",
-    detail:
-      "You can't bolt AI onto a business that hasn't digitized its ground truth. Strategy is choosing the order of operations.",
+    story:
+      "AI agents only work when the data and workflow structure beneath them are solid. At Machine Maze the roadmap was always platform first, intelligence second, AI third — the boring structural work that makes the AI promise credible. Companies that skip steps ship demos, not products.",
   },
   {
     title: "Metrics",
     icon: "∿",
     summary: "Define success before you build.",
-    detail:
-      "Every release shipped with metrics agreed upfront and validated after. My KPI dashboard became a key artifact in a VC funding round.",
-  },
-  {
-    title: "Execution",
-    icon: "▶",
-    summary: "A 0→1 platform is forty 0→0.1s.",
-    detail:
-      "Small releases, internal dogfooding, relentless iteration. In B2B, every module that works buys permission for the next one.",
+    story:
+      "Every module shipped with its metric agreed upfront — feasibility TaT per RFQ, fastest-approver, tracked weekly. That made impact provable, not anecdotal: 27-hour average turnaround held even as volume scaled 21x. The same discipline built the investor KPI dashboard that helped secure a VC round.",
   },
   {
     title: "AI Products",
     icon: "✳",
-    summary: "Trust beats cleverness.",
-    detail:
-      "ProcureIQ answers procurement questions exceptionally well — and politely declines everything else. Explainable, defensible, predictable.",
+    summary: "Human-in-the-loop isn't a constraint. It's the design.",
+    story:
+      "Before any reviewer touched an RFQ, the system surfaced a feasibility signal — complexity, revenue potential, manufacturability. Humans kept the final call, but worked from a recommendation, not a blank slate. Intelligent RFQ-to-supplier matchmaking did the same on the other side. That architecture held 27-hour TaT at 21x volume.",
+  },
+  {
+    title: "Failure",
+    icon: "⌀",
+    summary: "Validate the input before you commit the build.",
+    story:
+      "I built an Autodesk 3D viewer integration — and adoption stayed flat. The data showed why: most customers never sent STEP files in the first place; they live in 2D drawings. The feature worked beautifully where data existed, but I'd validated the assumption after building. It's now a standing check: confirm the input shows up at volume, first.",
   },
 ];
 
@@ -144,11 +154,11 @@ export const caseStudy = {
   ],
   outcomes: [
     { value: "21x", label: "RFQ pipeline — ₹34 Cr to ₹730 Cr" },
-    { value: "27 hrs", label: "Avg. feasibility turnaround" },
-    { value: "Patent", label: "India + Global PCT filed — named inventor" },
-    { value: "400", label: "Verified partners onboarded" },
-    { value: "5x", label: "Vendor allocation increase" },
-    { value: "VC round", label: "Product story used in funding" },
+    { value: "4 wks → 3 days", label: "RFQ-to-quote turnaround" },
+    { value: "Patent", label: "IN 202541011592 + Global PCT — named inventor" },
+    { value: "27 hrs", label: "Avg. feasibility turnaround at 21x volume" },
+    { value: "400", label: "GST-verified partners via Partner Hub" },
+    { value: "VC round", label: "KPI dashboard & product story used in funding" },
   ],
   lessons: [
     "Adoption is a product feature.",
@@ -245,6 +255,29 @@ export const aiLab = [
   { name: "Cursor / VS Code", status: "daily" },
 ];
 
+// Tool constellation (mind map) — grouped the way Raaghav actually works.
+export const toolMap = {
+  center: "RAAGHAV",
+  clusters: [
+    {
+      name: "Build with AI",
+      tools: ["Claude Code", "Claude", "ChatGPT", "Gemini API", "Lovable"],
+    },
+    {
+      name: "Ship",
+      tools: ["VS Code", "GitHub", "Vercel"],
+    },
+    {
+      name: "Design",
+      tools: ["Figma", "Canva", "Gamma"],
+    },
+    {
+      name: "Run the Process",
+      tools: ["Jira", "Confluence", "Granola"],
+    },
+  ],
+};
+
 export const aiLabNote =
   "Not a skills list — a live workshop. Everything here runs in a shipped product or an active experiment.";
 
@@ -332,8 +365,14 @@ Patent: ${caseStudy.patentNote}
 Modules shipped: RFQ Feasibility, Reviews & approvals, Department assignments, Price Discovery, Quote comparison, Proposal Creation, Customer Purchase Orders. Roadmap pending: BOM workflows, partner POs, live production tracking, scheduling, quality, inventory, logistics, invoicing, analytics. Only ~30% of roadmap released. Also built margin reconciliation: Customer PO → Vendor PO → Vendor Invoice → Machine Maze Invoice chain surfacing part-level and PO-level margin in real time. Additional facts: scaled RFQ pipeline 21x maintaining 27-hour average feasibility turnaround; integrated Autodesk 3D viewer for STEP files and Zoho CRM for RFQ push; built Partner Hub (supplier onboarding with GST verification, 400 verified partners); investor KPI dashboard was a key artifact in a VC funding round.
 IMPORTANT ACCURACY RULES: Precision X is a B2B platform used by Machine Maze and its customers/partners — never call it "SaaS". Raaghav's AI work is API integration and AI-native product building — never claim ML/machine-learning engineering experience.
 
-# HOW HE THINKS (frameworks)
-${frameworks.map((f) => `- ${f.title}: ${f.summary} ${f.detail}`).join("\n")}
+# HOW HE THINKS (frameworks — each backed by a real story from his career)
+${frameworks.map((f) => `- ${f.title}: ${f.summary} Story: ${f.story}`).join("\n")}
+
+# MORE REAL STORIES (for behavioral-style questions)
+- Scaling Matex 1→20 clients: product worked but growth stalled at 1 customer. Fixed UX friction, then realized procurement teams were the wrong buyer (existing vendor relationships, misaligned incentives) — went straight to CEOs/business heads with a savings-and-governance pitch, used the parent company's network for warm intros. Result: 20 corporate clients, ₹330 Cr GMV, ₹33 Cr documented savings across 11,000 RFQs. Lesson: the end user and the economic buyer aren't always the same person.
+- Vendor rating bias at Matex: a supplier-scoring product (20+ APIs over GST/PAN) failed for one customer — 70% of their suppliers were sole proprietorships with little public data. Diagnosed it personally, gave the customer two months free while fixing, and changed validation to test across supplier types before claiming coverage. Lesson: audit for systematic under-scoring before customers find it for you.
+- Financial reconciliation at Machine Maze: linked Customer PO → Vendor PO → Vendor Invoice → company invoice, surfacing part-level and PO-level margin in real time — leadership got live profitability tracking and audit-ready transparency across the export business.
+- Childhood: at age 10 he built race circuits from toy train tracks and household items to make Hot Wheels cars go faster — the origin of his builder instinct.
 
 # PRODUCTS BUILT
 ${products.map((p) => `- ${p.name} (${p.kind}, ${p.status}): ${p.tagline} ${p.detail}${p.link ? ` Live: ${p.link}` : ""}`).join("\n")}

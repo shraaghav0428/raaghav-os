@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { sfx } from "@/lib/sfx";
 
 const IDLE_HINTS = [
   "Ask me about Precision X",
@@ -90,7 +91,10 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
       onSecretUnlock();
       return;
     }
-    setOpen((o) => !o);
+    setOpen((o) => {
+      if (!o) sfx.hum();
+      return !o;
+    });
     setHint(null);
   };
 

@@ -5,6 +5,7 @@ import { frameworks } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 
+// Belief on the card, real story behind it. Every story is from an actual interview answer.
 export default function Frameworks() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
@@ -13,7 +14,7 @@ export default function Frameworks() {
       id="thinking"
       index="05 · How I Think"
       title="Frameworks, not buzzwords."
-      subtitle="Eight mental models, each earned on a real product."
+      subtitle="Eight beliefs — each one paid for with a real decision. Open the receipts."
     >
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {frameworks.map((f, i) => {
@@ -32,7 +33,7 @@ export default function Frameworks() {
                     {f.icon}
                   </span>
                   <span className="font-[family-name:var(--font-mono)] text-[10px] text-slate-600">
-                    {open ? "−" : "+"}
+                    {open ? "− story" : "+ story"}
                   </span>
                 </div>
                 <h3 className="mt-3 font-[family-name:var(--font-heading)] text-base sm:text-lg font-semibold">
@@ -46,7 +47,7 @@ export default function Frameworks() {
                 >
                   <div className="overflow-hidden">
                     <p className="text-[13px] leading-relaxed text-slate-300 border-t border-slate-700/60 pt-3">
-                      {f.detail}
+                      {f.story}
                     </p>
                   </div>
                 </div>
