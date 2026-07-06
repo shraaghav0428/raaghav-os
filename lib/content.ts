@@ -41,33 +41,33 @@ export const journey = [
     era: "2018",
     title: "Business Analyst",
     org: "Run Adam Sports",
-    hook: "Learned product fundamentals on a 15,000-user sports marketplace.",
+    hook: "Learned the product craft on a live marketplace — scaled to 15,000 registrations.",
     detail:
-      "Sprint ceremonies, backlog ownership, UX collaboration — and the realization that the best problems live between business and technology.",
+      "A sports & fitness networking marketplace was my training ground: backlog prioritization, sprint ceremonies, working with UX/UI teams to build the platform's interface. Fundamentals earned on real users, not theory.",
   },
   {
     era: "2021",
     title: "Product Manager",
     org: "Matex Technologies",
-    hook: "Scaled a B2B sourcing platform from 1 to 20 corporate clients.",
+    hook: "My introduction to procurement — ₹330 Cr GMV, ₹30 Cr+ saved for customers.",
     detail:
-      "₹330 Cr+ procurement value across 11,000 RFQs, ₹33 Cr+ in documented client savings. The unlock wasn't the product — it was realizing the end user and the economic buyer aren't the same person, and pitching CEOs on savings instead of procurement teams on features.",
+      "PM for a B2B marketplace connecting 80 corporate clients with 10,000+ vendors — storefronts, RFQs, the works. Also owned a Reverse Auction SaaS and grew it from 2 to 30 clients. Together: ₹330 Cr in GMV and over ₹30 Cr in documented savings.",
   },
   {
     era: "2022",
     title: "Senior Product Manager",
     org: "Machine Maze",
-    hook: "Built Precision X from zero — and scaled its pipeline 21x.",
+    hook: "Owned the 0→1 build of a complete manufacturing ecosystem — pipeline scaled 21x.",
     detail:
-      "First and only PM. Digitized the custom-manufacturing lifecycle end to end, grew RFQ pipeline from ₹34 Cr to ₹730 Cr, filed a patent, and carried the product story into investor funding discussions.",
+      "Built Precision X end to end — connecting every department and touchpoint in custom manufacturing. Led discovery, ideation, roadmap and launch as the first and only PM. Filed an India patent for the workflow, scaled the RFQ pipeline 21x from ₹34 Cr to ₹730 Cr, and carried the product story into investor funding discussions.",
   },
   {
     era: "2025",
     title: "AI Product Builder",
     org: "Independent",
-    hook: "Shipped 4 AI products end-to-end — without a coding background.",
+    hook: "AI is my daily workflow — 4 products designed, built and shipped solo.",
     detail:
-      "ProcureIQ, WordClimb, a financial calculator, an AI PDF editor — designed, built and deployed solo with Claude, Gemini and Vercel. Proof that AI-native building is a PM skill now.",
+      "Professional or personal, I build with AI every day: Gemini and Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator, an AI PDF editor — end to end, without a traditional coding background.",
   },
   {
     era: "Next",
@@ -248,15 +248,16 @@ export const products = [
   },
 ];
 
+// What each AI capability is actually doing right now — receipts, not skills.
 export const aiLab = [
-  { name: "Claude Code", status: "daily driver" },
-  { name: "AI Agents", status: "building" },
-  { name: "MCP", status: "learning" },
-  { name: "Gemini API", status: "in production" },
-  { name: "RAG", status: "applied — this site" },
-  { name: "Prompt Engineering", status: "practicing" },
-  { name: "Vercel", status: "in production" },
-  { name: "Cursor / VS Code", status: "daily" },
+  { name: "Claude Code", status: "daily driver", note: "built this entire site" },
+  { name: "AI Agents", status: "building", note: "agentic workflows in progress" },
+  { name: "MCP", status: "exploring", note: "how agents talk to tools" },
+  { name: "Gemini API", status: "live", note: "in 3 shipped products" },
+  { name: "Claude API", status: "live", note: "powers this site's assistant" },
+  { name: "RAG", status: "live", note: "grounds the assistant in my work" },
+  { name: "GitHub + Vercel", status: "ships everything", note: "every project, every deploy" },
+  { name: "VS Code", status: "workspace", note: "where the building happens" },
 ];
 
 // Tool constellation (mind map) — grouped the way Raaghav actually works.
@@ -283,7 +284,7 @@ export const toolMap = {
 };
 
 export const aiLabNote =
-  "Not a skills list — a live workshop. Everything here runs in a shipped product or an active experiment.";
+  "Not a skills list — a live workshop. Every card says what it's doing right now.";
 
 export const playbook = [
   { topic: "Discovery", card: "Sit with the user doing the job. Evidence before opinions." },
@@ -382,7 +383,7 @@ ${frameworks.map((f) => `- ${f.title}: ${f.summary} Story: ${f.story}`).join("\n
 ${products.map((p) => `- ${p.name} (${p.kind}, ${p.status}): ${p.tagline} ${p.detail}${p.link ? ` Live: ${p.link}` : ""}`).join("\n")}
 
 # AI LAB (current learning)
-${aiLab.map((a) => `- ${a.name}: ${a.status}`).join("\n")}
+${aiLab.map((a) => `- ${a.name} [${a.status}]: ${a.note}`).join("\n")}
 
 # PRODUCT PLAYBOOK
 ${playbook.map((p) => `- ${p.topic}: ${p.card}`).join("\n")}

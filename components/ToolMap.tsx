@@ -2,19 +2,19 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toolMap } from "@/lib/content";
-import { toolIcons } from "@/lib/toolIcons";
+import { toolIcons, isDarkHex } from "@/lib/toolIcons";
 import { sfx } from "@/lib/sfx";
 
 // v2 — radial neural map. Core at center, tools on a ring grouped in cluster arcs,
 // animated pulses travel the spokes. Hover a node: everything else dims and the
 // node's role in the workflow appears below the core.
 
-const W = 900;
-const H = 640;
+const W = 1080;
+const H = 740;
 const CX = W / 2;
-const CY = H / 2 - 10;
-const RING = 218; // node ring radius
-const LABEL_R = 316; // cluster label radius
+const CY = H / 2 - 24;
+const RING = 232; // node ring radius
+const LABEL_R = 398; // cluster label radius
 
 const ROLES: Record<string, string> = {
   "Claude Code": "built this site — my highest-leverage tool",
@@ -181,10 +181,11 @@ export default function ToolMap() {
           const dim = hot && !isHot;
           const isClaudeCode = n.tool === "Claude Code";
           const icon = toolIcons[n.tool];
+          const dark = icon && isDarkHex(icon.hex);
           const a = (n.angle * Math.PI) / 180;
           // name label sits radially outside the node
-          const lx = n.x + Math.cos(a) * 44;
-          const ly = n.y + Math.sin(a) * 44;
+          const lx = n.x + Math.cos(a) * 52;
+          const ly = n.y + Math.sin(a) * 52;
           return (
             <g
               key={n.tool}
@@ -223,11 +224,19 @@ export default function ToolMap() {
               {icon && "path" in icon ? (
                 <path
                   d={icon.path}
-                  className="toolmap-icon"
+                  className={dark ? "toolmap-icon" : undefined}
+                  fill={dark ? undefined : icon.hex}
                   transform={`translate(${n.x - 10}, ${n.y - 10}) scale(${20 / 24})`}
                 />
               ) : (
-                <text x={n.x} y={n.y + 5} textAnchor="middle" className="toolmap-monogram">
+                <text
+                  x={n.x}
+                  y={n.y + 5}
+                  textAnchor="middle"
+                  className="toolmap-monogram"
+                  fill={icon ? icon.hex : undefined}
+                  style={icon ? { fill: icon.hex } : undefined}
+                >
                   {icon && "monogram" in icon ? icon.monogram : n.tool[0]}
                 </text>
               )}

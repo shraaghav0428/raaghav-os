@@ -23,6 +23,8 @@ export default function DecryptedText({
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // hide until the decrypt begins, so the final text never flashes first
+    setOut("");
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) return;
@@ -37,23 +39,27 @@ export default function DecryptedText({
 
   useEffect(() => {
     if (!started) return;
-    let frame = 0;
-    // each character locks in after `lockAt` frames; unlocked ones keep scrambling
-    const lockAt = text.split("").map((_, i) => i * 1.6 + 4);
+    // authentic terminal decrypt: resolved text grows left→right with a short
+    // scramble head just ahead of the cursor; the rest stays blank.
+    let cursor = 0;
+    const HEAD = 3;
     const interval = setInterval(() => {
-      frame++;
-      let done = true;
-      const next = text
-        .split("")
-        .map((ch, i) => {
-          if (ch === " ") return " ";
-          if (frame >= lockAt[i]) return ch;
-          done = false;
-          return CIPHER[Math.floor(Math.random() * CIPHER.length)];
-        })
-        .join("");
-      setOut(next);
-      if (done) clearInterval(interval);
+      cursor++;
+      if (cursor >= text.length + HEAD) {
+        setOut(text);
+        clearInterval(interval);
+        return;
+      }
+      const resolved = text.slice(0, Math.max(0, Math.min(cursor, text.length)));
+      let head = "";
+      for (let i = cursor; i < Math.min(cursor + HEAD, text.length); i++) {
+        head += text[i] === " " ? " " : CIPHER[Math.floor(Math.random() * CIPHER.length)];
+      }
+      setOut(resolved + head);
+      if (cursor >= text.length) {
+        setOut(text);
+        clearInterval(interval);
+      }
     }, speed);
     return () => clearInterval(interval);
   }, [started, text, speed]);

@@ -3,7 +3,7 @@ import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 import ToolMap from "./ToolMap";
 
-const live = new Set(["daily driver", "in production", "daily", "applied — this site"]);
+const live = new Set(["daily driver", "live", "ships everything", "workspace"]);
 
 export default function AILab() {
   return (
@@ -38,6 +38,7 @@ export default function AILab() {
               <h3 className="mt-2 font-[family-name:var(--font-heading)] text-base font-semibold">
                 {a.name}
               </h3>
+              <p className="mt-1 text-[12px] text-slate-400 font-light">{a.note}</p>
             </div>
           </Reveal>
         ))}
