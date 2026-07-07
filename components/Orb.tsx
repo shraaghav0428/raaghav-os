@@ -6,7 +6,7 @@ import { sfx } from "@/lib/sfx";
 const IDLE_HINTS = [
   "Hi, I'm Raaga — ask me about Precision X",
   "Want to know how Raaghav thinks?",
-  "Explore the Product Playbook",
+  "Ask about the patent",
   "See the AI projects",
   "Why hire Raaghav?",
 ];

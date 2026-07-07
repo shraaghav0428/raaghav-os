@@ -24,7 +24,7 @@ export default function Beyond() {
     <>
       <SectionShell
         id="beyond"
-        index="07 · Beyond Work"
+        index="06 · Beyond Work"
         title="Hobbies are frameworks too."
         subtitle="Flip a card. Every hobby trains something the day job needs."
       >

@@ -14,7 +14,6 @@ import Frameworks from "@/components/Frameworks";
 import CaseStudyStrip from "@/components/CaseStudy";
 import Products from "@/components/Products";
 import AILab from "@/components/AILab";
-import PlaybookPrinciples from "@/components/PlaybookPrinciples";
 import Beyond from "@/components/Beyond";
 import Orb from "@/components/Orb";
 import { useEasterEggs, Terminal, LearningJourney } from "@/components/EasterEggs";
@@ -40,7 +39,6 @@ export default function Home() {
       <Products />
       <AILab />
       <Frameworks />
-      <PlaybookPrinciples />
       <Beyond />
       <Orb onSecretUnlock={() => setSecret(true)} />
       {terminal && <Terminal onClose={() => setTerminal(false)} />}

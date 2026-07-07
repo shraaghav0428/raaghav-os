@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { frameworks } from "@/lib/content";
+import { frameworks, principles } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 
@@ -56,6 +56,22 @@ export default function Frameworks() {
           );
         })}
       </div>
+
+      {/* principles marquee — the distilled version of everything above */}
+      <Reveal delay={120}>
+        <div className="mt-14 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+          <div className="marquee-track gap-4 py-2">
+            {[...principles, ...principles].map((p, i) => (
+              <span
+                key={i}
+                className="glass rounded-full px-7 py-3 text-sm sm:text-base font-[family-name:var(--font-heading)] font-medium whitespace-nowrap"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Reveal>
     </SectionShell>
   );
 }
