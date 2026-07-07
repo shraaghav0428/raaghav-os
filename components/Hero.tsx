@@ -68,14 +68,14 @@ export default function Hero() {
             <div className="absolute -inset-2 rounded-full bg-accent/20 blur-xl" aria-hidden />
             <Image
               src={identity.photo}
-              alt="Raaghav S.H"
-              width={104}
-              height={104}
+              alt="Raaghav S H"
+              width={176}
+              height={176}
               priority
-              className="relative rounded-full w-24 h-24 object-cover border border-accent/40"
+              className="relative rounded-full w-36 h-36 sm:w-44 sm:h-44 object-cover border-2 border-accent/40"
             />
             <span
-              className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-success border-2 border-bg"
+              className="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-success border-2 border-bg"
               title="Open to opportunities"
             />
           </div>

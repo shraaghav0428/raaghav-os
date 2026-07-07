@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { sfx } from "@/lib/sfx";
 
 const IDLE_HINTS = [
-  "Ask me about Precision X",
+  "Hi, I'm Raaga — ask me about Precision X",
   "Want to know how Raaghav thinks?",
   "Explore the Product Playbook",
   "See the AI projects",
@@ -101,8 +101,12 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
 
   return (
     <>
-      {/* floating orb */}
-      <div className="fixed bottom-6 right-6 z-[60] flex items-center gap-3">
+      {/* floating orb — hidden while the panel is open so it never overlaps the chat */}
+      <div
+        className={`fixed bottom-6 right-6 z-[60] flex items-center gap-3 transition-opacity duration-300 ${
+          open ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
         {hint && !open && (
           <button
             onClick={() => {
@@ -135,7 +139,7 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
           <div className="w-8 h-8 rounded-full orb-core shrink-0" />
           <div className="flex-1">
             <div className="font-[family-name:var(--font-heading)] font-semibold text-sm">
-              RAAGHAV OS · Assistant
+              Raaga <span className="text-slate-500 font-normal">· Raaghav&apos;s AI assist</span>
             </div>
             <div className="font-[family-name:var(--font-mono)] text-[10px] text-success">
               ● online — grounded in Raaghav&apos;s real work
@@ -154,8 +158,8 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
           {msgs.length === 0 && (
             <div className="fade-in">
               <p className="text-sm text-slate-300 font-light leading-relaxed">
-                I&apos;m Raaghav&apos;s digital twin — ask me anything about his experience,
-                products, or how he thinks.
+                I&apos;m Raaga — Raaghav&apos;s digital twin. Ask me anything about his
+                experience, products, or how he thinks.
               </p>
               <div className="mt-4 flex flex-col gap-2">
                 {SUGGESTED.map((s) => (
@@ -196,6 +200,22 @@ export default function Orb({ onSecretUnlock }: { onSecretUnlock: () => void }) 
             </div>
           )}
         </div>
+
+        {/* suggested questions stay reachable after the chat starts */}
+        {msgs.length > 0 && (
+          <div className="px-4 pt-2 pb-1 flex gap-2 overflow-x-auto [scrollbar-width:none]">
+            {SUGGESTED.map((s) => (
+              <button
+                key={s}
+                onClick={() => ask(s)}
+                disabled={loading}
+                className="glass rounded-full px-3.5 py-1.5 text-[11.5px] text-slate-300 whitespace-nowrap hover:border-accent/50 transition-colors disabled:opacity-40"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
 
         <form
           onSubmit={(e) => {

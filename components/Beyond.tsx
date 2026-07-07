@@ -152,10 +152,6 @@ export default function Beyond() {
                 </a>
               </Magnet>
             </div>
-            <div className="relative mt-10 font-[family-name:var(--font-mono)] text-[11px] text-slate-600">
-              RAAGHAV OS · built with Claude Code · psst — type{" "}
-              <span className="text-slate-400">whoami</span>
-            </div>
           </div>
         </Reveal>
       </section>

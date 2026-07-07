@@ -22,7 +22,7 @@ export const identity = {
 
 export const heroMetrics = [
   { value: "7+", label: "Years in Product" },
-  { value: "0→1", label: "Platforms Launched" },
+  { value: "5", label: "Products Built 0→1" },
   { value: "₹730 Cr", label: "RFQ Pipeline Built" },
   { value: "1", label: "Patent Filed" },
   { value: "4", label: "AI Products Shipped" },
@@ -49,9 +49,9 @@ export const journey = [
     era: "2020 – 2022",
     title: "Product Manager",
     org: "Matex Technologies",
-    hook: "Scaled a reverse auction platform 2 → 30 customers — ₹330 Cr GMV, ₹30 Cr saved.",
+    hook: "Reverse auction platform scaled 2 → 30 customers (₹330 Cr GMV, ₹30 Cr saved) · PM for a vendor rating platform and a B2B sourcing marketplace connecting 80+ corporates with 10,000+ vendors.",
     detail:
-      "My introduction to procurement. Alongside the reverse auction platform, I was PM for a vendor rating platform and a B2B sourcing marketplace connecting 80+ corporates with 10,000+ vendors — storefronts, RFQs, the works.",
+      "My introduction to procurement — storefronts, RFQs, vendor scoring, competitive bidding. Three products, one lesson: the end user and the economic buyer aren't always the same person.",
   },
   {
     era: "2024 – 2026",
@@ -178,7 +178,7 @@ export const caseStudy = {
     { value: "21x", label: "RFQ pipeline — ₹30 Cr to ₹730 Cr" },
     { value: "4 wks → 3 days", label: "RFQ-to-quote turnaround" },
     { value: "Patent", label: "IN 202541011592 + Global PCT — named inventor" },
-    { value: "27 hrs", label: "Avg. feasibility turnaround at 21x volume" },
+    { value: "27 hrs", label: "Avg. RFQ feasibility — down from 2 weeks, at 21x volume" },
     { value: "400", label: "GST-verified partners via Partner Hub" },
     { value: "VC round", label: "KPI dashboard & product story used in funding" },
   ],
@@ -198,7 +198,7 @@ export const products = [
     status: "Shipped",
     tagline: "The ₹730 Cr platform. Built from zero.",
     detail:
-      "Digitized the entire custom-manufacturing lifecycle for global OEMs — RFQ to purchase order. Patent filed. Investor-ready.",
+      "Digitized the entire custom-manufacturing lifecycle for global OEMs — RFQ to Delivery. Patent filed. Investor-ready.",
     stack: ["0→1", "B2B Platform", "Patent"],
     link: null,
     github: null,

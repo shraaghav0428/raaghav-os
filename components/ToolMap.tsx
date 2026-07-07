@@ -179,7 +179,6 @@ export default function ToolMap() {
         {nodes.map((n) => {
           const isHot = hot === n.tool;
           const dim = hot && !isHot;
-          const isClaudeCode = n.tool === "Claude Code";
           const icon = toolIcons[n.tool];
           const dark = icon && isDarkHex(icon.hex);
           const a = (n.angle * Math.PI) / 180;
@@ -202,14 +201,8 @@ export default function ToolMap() {
                 cy={n.y}
                 r={isHot ? 27 : 23}
                 fill={isHot ? "rgba(0,112,187,0.4)" : "rgba(17,24,39,0.06)"}
-                stroke={
-                  isClaudeCode
-                    ? "rgba(56,189,248,0.85)"
-                    : isHot
-                    ? "rgba(56,189,248,0.65)"
-                    : "rgba(148,163,184,0.32)"
-                }
-                strokeWidth={isClaudeCode ? 2 : 1.1}
+                stroke={isHot ? "rgba(56,189,248,0.65)" : "rgba(148,163,184,0.32)"}
+                strokeWidth={1.1}
                 style={{ transition: "all 0.3s" }}
               >
                 {!hot && (
@@ -244,7 +237,7 @@ export default function ToolMap() {
                 x={lx}
                 y={ly + 3}
                 textAnchor="middle"
-                className={`toolmap-label ${isHot ? "hot" : ""} ${isClaudeCode ? "claude" : ""}`}
+                className={`toolmap-label ${isHot ? "hot" : ""}`}
               >
                 {n.tool}
               </text>
