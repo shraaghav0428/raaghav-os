@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { caseStudy } from "@/lib/content";
+import { caseStudy, visionMap } from "@/lib/content";
 import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 import CountUp from "./CountUp";
+import VisionMap from "./VisionMap";
 
 function AnimatedPipeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -62,11 +63,7 @@ function AnimatedPipeline() {
   );
 }
 
-const tabs = ["Problem", "Vision", "Solution", "Challenges", "Lessons"] as const;
-type Tab = (typeof tabs)[number];
-
 export default function CaseStudyStrip() {
-  const [tab, setTab] = useState<Tab>("Problem");
   const [patentGlow, setPatentGlow] = useState(0);
 
   return (
@@ -106,75 +103,55 @@ export default function CaseStudyStrip() {
         })}
       </div>
 
-      {/* story tabs — one block, no text walls */}
-      <Reveal delay={100}>
-        <div className="mt-4 glass rounded-3xl p-7 sm:p-9">
-          <div className="flex flex-wrap gap-2">
-            {tabs.map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`rounded-full px-4 py-2 text-[13px] transition-all duration-300 border ${
-                  tab === t
-                    ? "bg-primary/25 border-accent/50 text-ink"
-                    : "border-slate-700/50 text-slate-400 hover:text-ink"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+      {/* before → after */}
+      <Reveal delay={80}>
+        <div className="mt-4 grid sm:grid-cols-2 gap-4">
+          <div className="glass rounded-3xl p-7">
+            <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.28em] text-slate-500">
+              Before
+            </div>
+            <ul className="mt-4 space-y-3">
+              {caseStudy.beforeAfter.before.map((b) => (
+                <li key={b} className="flex gap-3 text-[15px] text-slate-400 font-light leading-relaxed">
+                  <span className="text-danger/70 mt-0.5 shrink-0">✕</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <div key={tab} className="mt-6 fade-in min-h-[7rem]">
-            {(tab === "Problem" || tab === "Vision" || tab === "Solution") &&
-              (() => {
-                const block =
-                  tab === "Problem"
-                    ? caseStudy.problem
-                    : tab === "Vision"
-                    ? caseStudy.vision
-                    : caseStudy.solution;
-                return (
-                  <div className="max-w-4xl">
-                    <p className="font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-semibold">
-                      {block.headline}
-                    </p>
-                    <ul className="mt-5 space-y-3">
-                      {block.points.map((pt) => (
-                        <li key={pt} className="flex gap-3 text-[15px] sm:text-base text-slate-300 font-light leading-relaxed">
-                          <span className="text-accent mt-1 shrink-0">▹</span>
-                          {pt}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })()}
-            {tab === "Challenges" && (
-              <ul className="grid sm:grid-cols-2 gap-3 max-w-4xl">
-                {caseStudy.challenges.map((c) => (
-                  <li key={c} className="flex gap-3 text-[15px] text-slate-300 font-light">
-                    <span className="text-warning mt-0.5">▹</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {tab === "Lessons" && (
-              <div className="space-y-3 max-w-3xl">
-                {caseStudy.lessons.map((l) => (
-                  <p
-                    key={l}
-                    className="text-lg sm:text-xl text-slate-200 font-[family-name:var(--font-heading)]"
-                  >
-                    “{l}”
-                  </p>
-                ))}
-              </div>
-            )}
+          <div className="glass spot rounded-3xl p-7 border-accent/20">
+            <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.28em] text-accent">
+              After
+            </div>
+            <ul className="mt-4 space-y-3">
+              {caseStudy.beforeAfter.after.map((a) => (
+                <li key={a} className="flex gap-3 text-[15px] text-slate-200 font-light leading-relaxed">
+                  <span className="text-success mt-0.5 shrink-0">✓</span>
+                  {a}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Reveal>
+
+      {/* the vision map — the patented flow, RFQ to Delivery */}
+      <Reveal delay={120}>
+        <div className="mt-4 glass idle-shimmer rounded-3xl p-5 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 px-2">
+            <h3 className="font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-semibold">
+              {visionMap.headline}
+            </h3>
+          </div>
+          <p className="mt-2 px-2 text-sm text-slate-400 font-light max-w-3xl">
+            {visionMap.sub}
+          </p>
+          <div className="mt-4">
+            <VisionMap />
+          </div>
+        </div>
+      </Reveal>
+
     </SectionShell>
   );
 }

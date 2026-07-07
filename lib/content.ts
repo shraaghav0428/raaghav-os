@@ -187,8 +187,44 @@ export const caseStudy = {
     "Digitize the ground truth before promising intelligence.",
     "In B2B, trust ships in small releases.",
   ],
+  beforeAfter: {
+    before: [
+      "Quotes took 4 weeks — customers walking",
+      "RFQs scattered across email, spreadsheets and WhatsApp",
+      "Zero visibility: who decided what, and why",
+    ],
+    after: [
+      "Quotes in 3 days — feasibility in 27 hours",
+      "One platform, every decision logged",
+      "₹730 Cr pipeline, visible end to end",
+    ],
+  },
   patentNote:
     "India patent App No. 202541011592 + Global PCT — led the complete IP documentation and filing as named inventor.",
+};
+
+// The Vision Map — the patented end-to-end flow, RFQ to Delivery.
+// Every stage is first-class; status marks what's live vs sequenced next.
+export const visionMap = {
+  headline: "One connected flow — RFQ to Delivery.",
+  sub: "The patented vision: every department, every touchpoint, one platform. Sequenced deliberately — platform first, intelligence on top.",
+  stages: [
+    { name: "Partner Onboarding", status: "live", note: "Suppliers onboard with capabilities, machinery, certifications" },
+    { name: "Partner Evaluation", status: "live", note: "GST-verified and scored — a 400-strong partner ecosystem" },
+    { name: "RFQ Onboarding", status: "live", note: "Structured intake — RFQs flow in straight from CRM" },
+    { name: "RFQ Feasibility", status: "live", note: "AI-assisted scoring, human-in-the-loop — 27-hour turnaround" },
+    { name: "Price Discovery", status: "live", note: "Intelligent RFQ-to-supplier matchmaking finds the right quotes", badge: "+ BOM breakdown layer" },
+    { name: "Quote Comparison", status: "live", note: "Side-by-side commercial comparison, trade-offs visible" },
+    { name: "Client Proposals", status: "live", note: "Proposal creation with reviews and approvals" },
+    { name: "Purchase Orders", status: "live", note: "Customer POs logged, linked and traceable" },
+    { name: "Production Tracking", status: "next", note: "Planned vs actual, part by part, across suppliers" },
+    { name: "Quality", status: "next", note: "Inspections and reports before any invoice is raised" },
+    { name: "Inventory", status: "next", note: "Component-level stock visibility for assemblies" },
+    { name: "Logistics", status: "next", note: "Movement tracked across suppliers and processes" },
+    { name: "Invoicing", status: "next", note: "Invoice automation on verified delivery — margin reconciliation already live" },
+    { name: "Delivery", status: "goal", note: "On spec, on time — and the loop closes" },
+  ],
+  unlocks: "What the data unlocks next: Analytics → Costing Intelligence → AI Agents",
 };
 
 export const products = [
@@ -415,6 +451,7 @@ Challenges: ${caseStudy.challenges.join(" | ")}
 Outcomes: ${caseStudy.outcomes.map((o) => `${o.value} — ${o.label}`).join(" | ")}
 Lessons: ${caseStudy.lessons.join(" | ")}
 Patent: ${caseStudy.patentNote}
+Vision map (the patented end-to-end flow shown on the site): ${visionMap.stages.map((s) => `${s.name} [${s.status}]`).join(" → ")}. ${visionMap.unlocks}
 Modules shipped: RFQ Feasibility, Reviews & approvals, Department assignments, Price Discovery, Quote comparison, Proposal Creation, Customer Purchase Orders. Roadmap pending: BOM workflows, partner POs, live production tracking, scheduling, quality, inventory, logistics, invoicing, analytics. Only ~30% of roadmap released. Also built margin reconciliation: Customer PO → Vendor PO → Vendor Invoice → Machine Maze Invoice chain surfacing part-level and PO-level margin in real time. Additional facts: scaled RFQ pipeline 21x maintaining 27-hour average feasibility turnaround; integrated Autodesk 3D viewer for STEP files and Zoho CRM for RFQ push; built Partner Hub (supplier onboarding with GST verification, 400 verified partners); investor KPI dashboard was a key artifact in a VC funding round.
 IMPORTANT ACCURACY RULES: Precision X is a B2B platform used by Machine Maze and its customers/partners — never call it "SaaS". Raaghav's AI work is API integration and AI-native product building — never claim ML/machine-learning engineering experience.
 

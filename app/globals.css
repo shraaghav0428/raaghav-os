@@ -470,6 +470,35 @@ body.jarvis-mode .orb-core {
   font-weight: 700;
   fill: #cbd5e1;
 }
+.vision-node {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  fill: #e2e8f0;
+}
+.vision-node.goal {
+  fill: #86efac;
+  font-size: 15px;
+}
+.vision-legend {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: #64748b;
+}
+.vision-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  fill: #c4b5fd;
+}
+.vision-unlocks {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  fill: #7dd3fc;
+  opacity: 0.75;
+}
 .toolmap-role {
   font-family: var(--font-mono);
   font-size: 12px;
