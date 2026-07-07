@@ -3,8 +3,8 @@
 // Copy rules: outcome first, one idea per line, written for founders / product leaders / recruiters.
 
 export const identity = {
-  name: "RAAGHAV",
-  fullName: "Raaghav S.H",
+  name: "RAAGHAV S H",
+  fullName: "Raaghav S H",
   roles: ["Product Manager", "Systems Thinker", "AI Builder"],
   tagline:
     "I build products where technology, business and human behaviour intersect.",
@@ -51,7 +51,7 @@ export const journey = [
     org: "Matex Technologies",
     hook: "Scaled a reverse auction platform 2 → 30 customers — ₹330 Cr GMV, ₹30 Cr saved.",
     detail:
-      "My introduction to procurement. Alongside the reverse auction platform, I was PM for a vendor rating platform and a B2B sourcing marketplace connecting 80 corporates with 10,000+ vendors — storefronts, RFQs, the works.",
+      "My introduction to procurement. Alongside the reverse auction platform, I was PM for a vendor rating platform and a B2B sourcing marketplace connecting 80+ corporates with 10,000+ vendors — storefronts, RFQs, the works.",
   },
   {
     era: "2024 – 2026",
@@ -75,7 +75,7 @@ export const journey = [
     org: "Independent",
     hook: "AI is my daily workflow — products designed, built and shipped solo.",
     detail:
-      "Professional or personal, I build with AI every day: Gemini and Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator — end to end, without a traditional coding background.",
+      "Professional or personal, I build with AI every day: Claude APIs for intelligence, GitHub for commits, Vercel for deploys. ProcureIQ, WordClimb, a financial freedom calculator — end to end, without a traditional coding background.",
   },
 ];
 
@@ -222,8 +222,8 @@ export const products = [
     status: "Live",
     tagline: "Wordle, if it had a boss ladder — with an AI coach.",
     detail:
-      "Four escalating levels daily. After two tries, a Gemini-powered assist reads your board and nudges without spoiling.",
-    stack: ["React", "Gemini", "Serverless"],
+      "Four escalating levels daily. After two tries, an AI assist reads your board and nudges without spoiling.",
+    stack: ["React", "AI Assist", "Serverless"],
     link: "https://shraaghav0428.github.io/WordClimb/",
     github: "https://github.com/shraaghav0428/WordClimb",
     size: "small",
@@ -243,12 +243,12 @@ export const products = [
   {
     name: "RAAGHAV OS",
     kind: "This Website",
-    status: "You're in it",
+    status: "Live",
     tagline: "My best case study is the one you're inside.",
     detail:
       "An AI-powered portfolio with a live assistant grounded in my real work — designed and built with Claude Code.",
     stack: ["Next.js 16", "Tailwind v4", "Claude Code", "LLM API", "Web Audio", "Vercel"],
-    link: null,
+    link: "/",
     github: "https://github.com/shraaghav0428/raaghav-os",
     size: "small",
   },
@@ -259,8 +259,7 @@ export const aiLab = [
   { name: "Claude Code", status: "daily driver", note: "built this entire site" },
   { name: "AI Agents", status: "building", note: "agentic workflows in progress" },
   { name: "MCP", status: "exploring", note: "how agents talk to tools" },
-  { name: "Gemini API", status: "live", note: "in 3 shipped products" },
-  { name: "Claude API", status: "live", note: "powers this site's assistant" },
+  { name: "Claude API", status: "live", note: "the layer behind RAAGHAV OS & ProcureIQ" },
   { name: "RAG", status: "live", note: "grounds the assistant in my work" },
   { name: "GitHub + Vercel", status: "ships everything", note: "every project, every deploy" },
   { name: "VS Code", status: "workspace", note: "where the building happens" },
@@ -272,7 +271,7 @@ export const toolMap = {
   clusters: [
     {
       name: "Build with AI",
-      tools: ["Claude Code", "Claude", "ChatGPT", "Gemini API", "Lovable"],
+      tools: ["Claude Code", "Claude", "ChatGPT", "Lovable"],
     },
     {
       name: "Ship",
@@ -321,6 +320,7 @@ export const beyond = [
     why: "Deciding well with incomplete information.",
     flip: "Every position is a prioritization exercise — evaluate, commit, live with the trade-off. Sounds familiar.",
     link: null,
+    linkLabel: null,
   },
   {
     name: "Investing",
@@ -328,6 +328,7 @@ export const beyond = [
     why: "I think in decades, not quarters.",
     flip: "Compounding is the only strategy I've never had to pivot. I even built the calculator I plan with.",
     link: "https://shraaghav0428.github.io/RaaghavFinancialFreedom/",
+    linkLabel: "See the tool I built ↗",
   },
   {
     name: "Gym",
@@ -335,13 +336,15 @@ export const beyond = [
     why: "Consistency compounds.",
     flip: "7 AM, five days a week, non-negotiable. Discipline is a transferable skill — ask my backlog.",
     link: null,
+    linkLabel: null,
   },
   {
     name: "Veena",
     icon: "♪",
     why: "Structure underneath what feels effortless.",
     flip: "I play the veena — Carnatic classical. The original lesson in deliberate practice: slow reps, muscle memory, then it sings.",
-    link: null,
+    link: "https://www.youtube.com/watch?v=69u2Em22sgI",
+    linkLabel: "Watch me play ↗",
   },
   {
     name: "Travel",
@@ -349,6 +352,7 @@ export const beyond = [
     why: "New contexts break old assumptions.",
     flip: "Every trip is user research I didn't plan — watching how differently people solve the same problems.",
     link: null,
+    linkLabel: null,
   },
   {
     name: "Family",
@@ -356,6 +360,7 @@ export const beyond = [
     why: "Chennai, every month. Never deprioritized.",
     flip: "Some commitments don't go on the roadmap. They are the roadmap.",
     link: null,
+    linkLabel: null,
   },
 ];
 
@@ -397,7 +402,7 @@ export const navSections = [
 export function buildKnowledgeBase(): string {
   return `
 # WHO IS RAAGHAV
-${identity.fullName} — Senior Product Manager at Aerchain (2026–present), the AI-first procurement platform. Based in ${identity.location}. 7+ years across B2B SaaS, manufacturing tech and marketplace products, mostly in high-growth startup environments. He has never written traditional code, yet ships AI-powered products end-to-end using Claude, Gemini, VS Code, GitHub and Vercel. Contact: ${identity.email} · LinkedIn: ${identity.linkedin} · GitHub: ${identity.github}
+${identity.fullName} — Senior Product Manager at Aerchain (2026–present), the AI-first procurement platform. Based in ${identity.location}. 7+ years across B2B SaaS, manufacturing tech and marketplace products, mostly in high-growth startup environments. He has never written traditional code, yet ships AI-powered products end-to-end using Claude, VS Code, GitHub and Vercel. The Claude API is the intelligence layer behind RAAGHAV OS and ProcureIQ. Contact: ${identity.email} · LinkedIn: ${identity.linkedin} · GitHub: ${identity.github}
 
 # CAREER JOURNEY
 ${journey.map((j) => `- ${j.era} · ${j.title} @ ${j.org}: ${j.hook} ${j.detail}`).join("\n")}

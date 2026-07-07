@@ -82,7 +82,7 @@ export default function Hero() {
         </div>
 
         <h1
-          className="fade-up font-[family-name:var(--font-heading)] font-bold tracking-tight text-[17vw] sm:text-8xl lg:text-[9rem] leading-none glow-blue select-none"
+          className="fade-up font-[family-name:var(--font-heading)] font-bold tracking-tight text-[11.5vw] sm:text-7xl lg:text-[7.6rem] leading-none glow-blue select-none whitespace-nowrap"
           style={{ animationDelay: "0.25s" }}
         >
           <DecryptedText text={identity.name} speed={42} className="text-gradient" />

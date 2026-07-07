@@ -66,8 +66,12 @@ export default function Products() {
                   <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold leading-tight">
                     {p.name}
                   </h3>
-                  <span className="font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-wider text-slate-500 whitespace-nowrap">
-                    {p.status}
+                  <span
+                    className={`font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-wider whitespace-nowrap ${
+                      p.status === "Live" ? "text-success" : "text-slate-500"
+                    }`}
+                  >
+                    {p.status === "Live" ? "● Live" : p.status}
                   </span>
                 </div>
                 <p className="mt-2 text-[13px] text-slate-300 font-light flex-1">

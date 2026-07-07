@@ -3,7 +3,6 @@
 import {
   siClaudecode,
   siClaude,
-  siGooglegemini,
   siGithub,
   siVercel,
   siFigma,
@@ -18,7 +17,6 @@ export type ToolIcon =
 export const toolIcons: Record<string, ToolIcon> = {
   "Claude Code": { path: siClaudecode.path, hex: `#${siClaudecode.hex}` },
   Claude: { path: siClaude.path, hex: `#${siClaude.hex}` },
-  "Gemini API": { path: siGooglegemini.path, hex: `#${siGooglegemini.hex}` },
   GitHub: { path: siGithub.path, hex: `#${siGithub.hex}` },
   Vercel: { path: siVercel.path, hex: `#${siVercel.hex}` },
   Figma: { path: siFigma.path, hex: `#${siFigma.hex}` },

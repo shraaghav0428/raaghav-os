@@ -20,7 +20,6 @@ const ROLES: Record<string, string> = {
   "Claude Code": "built this site — my highest-leverage tool",
   Claude: "thinking partner, writing, analysis",
   ChatGPT: "research & brainstorming",
-  "Gemini API": "powers my shipped AI features",
   Lovable: "rapid UI prototypes",
   "VS Code": "where everything comes together",
   GitHub: "version control for all my builds",
@@ -55,10 +54,11 @@ function buildLayout() {
   for (const c of toolMap.clusters) {
     const arc = perTool * c.tools.length;
     const mid = cursor + perTool / 2 + arc / 2 - perTool / 2;
+    // round to 2dp so SSR and client render byte-identical coordinates
     clusterLabels.push({
       name: c.name,
-      x: CX + Math.cos((mid * Math.PI) / 180) * LABEL_R,
-      y: CY + Math.sin((mid * Math.PI) / 180) * LABEL_R,
+      x: Math.round((CX + Math.cos((mid * Math.PI) / 180) * LABEL_R) * 100) / 100,
+      y: Math.round((CY + Math.sin((mid * Math.PI) / 180) * LABEL_R) * 100) / 100,
       angle: mid,
     });
     for (let i = 0; i < c.tools.length; i++) {
@@ -67,9 +67,9 @@ function buildLayout() {
       nodes.push({
         tool: c.tools[i],
         cluster: c.name,
-        x: CX + Math.cos(a) * RING,
-        y: CY + Math.sin(a) * RING,
-        angle: cursor,
+        x: Math.round((CX + Math.cos(a) * RING) * 100) / 100,
+        y: Math.round((CY + Math.sin(a) * RING) * 100) / 100,
+        angle: Math.round(cursor * 100) / 100,
       });
     }
     cursor += GAP_DEG;
@@ -183,9 +183,9 @@ export default function ToolMap() {
           const icon = toolIcons[n.tool];
           const dark = icon && isDarkHex(icon.hex);
           const a = (n.angle * Math.PI) / 180;
-          // name label sits radially outside the node
-          const lx = n.x + Math.cos(a) * 52;
-          const ly = n.y + Math.sin(a) * 52;
+          // name label sits radially outside the node (rounded for SSR parity)
+          const lx = Math.round((n.x + Math.cos(a) * 52) * 100) / 100;
+          const ly = Math.round((n.y + Math.sin(a) * 52) * 100) / 100;
           return (
             <g
               key={n.tool}

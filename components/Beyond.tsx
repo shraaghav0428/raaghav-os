@@ -7,6 +7,16 @@ import Reveal from "./Reveal";
 import Magnet from "./Magnet";
 import { sfx } from "@/lib/sfx";
 
+// app-logo style gradient badges per hobby
+const BADGES: Record<string, string> = {
+  Chess: "linear-gradient(135deg, #f59e0b, #b45309)",
+  Investing: "linear-gradient(135deg, #22c55e, #15803d)",
+  Gym: "linear-gradient(135deg, #ef4444, #b91c1c)",
+  Veena: "linear-gradient(135deg, #a78bfa, #7c3aed)",
+  Travel: "linear-gradient(135deg, #38bdf8, #0070bb)",
+  Family: "linear-gradient(135deg, #fb923c, #ea580c)",
+};
+
 export default function Beyond() {
   const [flipped, setFlipped] = useState<number | null>(null);
 
@@ -35,7 +45,12 @@ export default function Beyond() {
                     {/* front */}
                     <span className="flip-face glass rounded-2xl p-6">
                       <span className="flex items-center gap-3">
-                        <span className="text-3xl text-accent">{b.icon}</span>
+                        <span
+                          className="w-11 h-11 rounded-xl flex items-center justify-center text-xl text-white shadow-lg shrink-0"
+                          style={{ background: BADGES[b.name] ?? "linear-gradient(135deg, #38bdf8, #0070bb)" }}
+                        >
+                          {b.icon}
+                        </span>
                         <span className="font-[family-name:var(--font-heading)] text-lg font-semibold">
                           {b.name}
                         </span>
@@ -60,7 +75,7 @@ export default function Beyond() {
                           onClick={(e) => e.stopPropagation()}
                           className="absolute bottom-4 left-6 text-[12px] text-accent hover:text-ink transition-colors"
                         >
-                          See the tool I built ↗
+                          {b.linkLabel ?? "Open ↗"}
                         </a>
                       )}
                     </span>
