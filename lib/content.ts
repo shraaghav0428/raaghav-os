@@ -221,6 +221,12 @@ export const artifacts = {
     { src: "/artifacts/rollout-demo.jpg", caption: "Live demo of production tracking to the org" },
     { src: "/artifacts/rollout-panorama.jpg", caption: "Adoption is earned in rooms like this" },
   ],
+  // the violet stages of the Vision Map — already designed, not vaporware
+  roadmapScreens: [
+    { src: "/artifacts/figma-production-kanban.jpg", caption: "Production lifecycle board — schedule → quality → delivery" },
+    { src: "/artifacts/figma-production-schedule.jpg", caption: "Production tracking — planned vs actual, process by process" },
+    { src: "/artifacts/figma-quality-fir.jpg", caption: "Quality — Final Inspection Report with tolerance checks" },
+  ],
 };
 
 // The Vision Map — the patented end-to-end flow, RFQ to Delivery.

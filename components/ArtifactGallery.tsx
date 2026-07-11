@@ -77,6 +77,39 @@ export default function ArtifactGallery() {
         </div>
       </Reveal>
 
+      {/* roadmap modules — designed, waiting on the sequence */}
+      <Reveal delay={140}>
+        <div className="mt-8">
+          <div className="section-index !text-[10px] mb-1" style={{ color: "var(--color-accent2)" }}>
+            The violet stages of the map — already designed
+          </div>
+          <p className="text-sm text-slate-400 font-light mb-4 max-w-2xl">
+            Production, Quality and Finance weren&apos;t promises. Full UI, specced and
+            client-reviewed — sequenced behind the data layer, by design.
+          </p>
+          <div className="grid grid-cols-3 gap-3">
+            {artifacts.roadmapScreens.map((s) => (
+              <button
+                key={s.src}
+                onClick={() => setLightbox(s)}
+                className="glass spot rounded-2xl overflow-hidden text-left group border-accent2/20"
+              >
+                <Image
+                  src={s.src}
+                  alt={s.caption}
+                  width={700}
+                  height={430}
+                  className="w-full aspect-video object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+                <p className="px-4 py-3 text-[12px] text-slate-400 font-light leading-snug hidden sm:block">
+                  {s.caption}
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
       {/* lightbox */}
       {lightbox && (
         <div
