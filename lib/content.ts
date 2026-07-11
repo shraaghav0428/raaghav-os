@@ -203,6 +203,26 @@ export const caseStudy = {
     "India patent App No. 202541011592 + Global PCT — led the complete IP documentation and filing as named inventor.",
 };
 
+// Real artifacts — actual product UI (demo data) and rollout moments.
+export const artifacts = {
+  film: {
+    src: "/artifacts/precisionx-flow.mp4",
+    poster: "/artifacts/precisionx-flow-poster.jpg",
+    caption: "The full RFQ → Quote approval flow — 12 minutes of real product, in 45 seconds.",
+  },
+  screens: [
+    { src: "/artifacts/ui-400.jpg", caption: "Structured RFQ intake — clean data from the first field" },
+    { src: "/artifacts/ui-200.jpg", caption: "Part-level detail with reviews, approvals and comments" },
+    { src: "/artifacts/ui-500.jpg", caption: "Vendor quotation capture — commercial terms, structured" },
+    { src: "/artifacts/ui-600.jpg", caption: "Quote comparison — price, lead time, compliance, side by side" },
+  ],
+  photos: [
+    { src: "/artifacts/rollout-whoisitfor.jpg", caption: "Rolling out Precision X — every role, one platform" },
+    { src: "/artifacts/rollout-demo.jpg", caption: "Live demo of production tracking to the org" },
+    { src: "/artifacts/rollout-panorama.jpg", caption: "Adoption is earned in rooms like this" },
+  ],
+};
+
 // The Vision Map — the patented end-to-end flow, RFQ to Delivery.
 // Every stage is first-class; status marks what's live vs sequenced next.
 export const visionMap = {

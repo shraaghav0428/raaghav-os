@@ -19,14 +19,22 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RAAGHAV OS — Product Manager · Systems Thinker · AI Builder",
+  metadataBase: new URL("https://raaghav-os.vercel.app"),
+  title: "RAAGHAV OS — Senior Product Manager · Systems Thinker · AI Builder",
   description:
-    "The personal operating system of Raaghav S.H — Senior Product Manager. 7+ years building 0-to-1 B2B platforms, a ₹730 Cr RFQ pipeline, a filed patent, and AI-native products.",
+    "The personal operating system of Raaghav S H — Senior Product Manager. 7+ years building 0-to-1 B2B platforms, a ₹730 Cr RFQ pipeline, a filed patent, and AI-native products.",
   openGraph: {
     title: "RAAGHAV OS",
     description:
-      "Not a portfolio. An operating system. Explore how Raaghav thinks, builds, and solves.",
+      "Not a portfolio. An operating system. Explore how Raaghav thinks, builds, and solves — with Raaga, his AI assist.",
     type: "website",
+    url: "https://raaghav-os.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RAAGHAV OS",
+    description:
+      "Not a portfolio. An operating system. 0→1 platforms, ₹730 Cr pipelines, AI products shipped solo.",
   },
 };
 

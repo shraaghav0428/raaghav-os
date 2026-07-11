@@ -108,9 +108,18 @@ export default function Hero() {
           <span className="caret text-accent">▌</span>
         </p>
 
-        <div className="fade-up mt-9 flex justify-center gap-4" style={{ animationDelay: "0.8s" }}>
+        <div className="fade-up mt-9 flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "0.8s" }}>
           <Magnet>
             <BootButton />
+          </Magnet>
+          <Magnet>
+            <a
+              href="/Raaghav_SH_Resume.pdf"
+              download="Raaghav_SH_Resume.pdf"
+              className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-medium tracking-wide text-slate-200 hover:border-accent/50 transition-colors"
+            >
+              Resume <span className="text-accent">↓</span>
+            </a>
           </Magnet>
         </div>
 

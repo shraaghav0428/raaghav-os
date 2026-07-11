@@ -1,5 +1,32 @@
 import { buildKnowledgeBase } from "@/lib/content";
 
+// ---- per-IP rate limiting (in-memory, per serverless instance) ----
+// Not bulletproof across instances, but stops casual scripting against the key.
+const WINDOW_MIN = 60 * 1000;
+const WINDOW_HOUR = 60 * 60 * 1000;
+const LIMIT_MIN = 6;
+const LIMIT_HOUR = 30;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const arr = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_HOUR);
+  const lastMinute = arr.filter((t) => now - t < WINDOW_MIN).length;
+  if (lastMinute >= LIMIT_MIN || arr.length >= LIMIT_HOUR) {
+    hits.set(ip, arr);
+    return true;
+  }
+  arr.push(now);
+  hits.set(ip, arr);
+  // keep the map from growing unbounded
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) {
+      if (v.length === 0 || now - v[v.length - 1] > WINDOW_HOUR) hits.delete(k);
+    }
+  }
+  return false;
+}
+
 const GEMINI_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
@@ -74,6 +101,18 @@ async function askClaude(
 }
 
 export async function POST(req: Request) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (rateLimited(ip)) {
+    return Response.json(
+      {
+        answer:
+          "You've got great questions — but I need a short breather. Give me a minute, or reach Raaghav directly at shraaghav@gmail.com.",
+      },
+      { status: 429 }
+    );
+  }
+
   const geminiKey = process.env.GEMINI_API_KEY;
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
   if (!geminiKey && !anthropicKey) {

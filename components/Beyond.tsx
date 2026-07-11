@@ -133,6 +133,15 @@ export default function Beyond() {
               </Magnet>
               <Magnet>
                 <a
+                  href="/Raaghav_SH_Resume.pdf"
+                  download="Raaghav_SH_Resume.pdf"
+                  className="inline-block rounded-full glass px-7 py-3 text-sm text-slate-200 hover:border-accent/50 transition-colors duration-300"
+                >
+                  Resume ↓
+                </a>
+              </Magnet>
+              <Magnet>
+                <a
                   href={identity.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"

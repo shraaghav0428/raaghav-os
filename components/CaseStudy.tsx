@@ -6,6 +6,7 @@ import SectionShell from "./SectionShell";
 import Reveal from "./Reveal";
 import CountUp from "./CountUp";
 import VisionMap from "./VisionMap";
+import ArtifactGallery from "./ArtifactGallery";
 
 function AnimatedPipeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -151,6 +152,9 @@ export default function CaseStudyStrip() {
           </div>
         </div>
       </Reveal>
+
+      {/* proof: film, real screens, rollout */}
+      <ArtifactGallery />
 
     </SectionShell>
   );
